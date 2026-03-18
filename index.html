@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+<title>慶應義塾大学 医学部 2026 重要構文 自習スイート</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Serif+JP:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --univ-primary:#002e5d; --univ-dark:#001a38; --univ-light:#da2128; --univ-red:#da2128;
+  --gold:#C9A84C; --gold-light:#E8CC7A;
+  --bg:#0D0D0D; --bg-card:#151515; --bg-inner:#1C1C1C;
+  --border:#282828; --border2:#333333;
+  --text:#EAE5DA; --text-sub:#A09890; --text-dim:#666055;
+  --s:#FF6B35; --v:#1E88E5; --o:#FFC107; --c:#43A047;
+  --adv:#B39DDB; --adj:#F48FB1; --conj:#D4C200; --rel:#AB47BC;
+  --ok:#2E7D32; --ok2:#43A047; --redo:#E65100;
+  --cl-s:#FF6B35; --cl-o:#C9A84C; --cl-rel:#F48FB1; --cl-adv:#B39DDB;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Source Serif 4','Noto Serif JP',Georgia,serif;font-size:16px;line-height:1.85;-webkit-text-size-adjust:100%;overflow-x:hidden;}
+.header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,var(--univ-dark) 0%,var(--univ-primary) 45%,var(--univ-red) 100%);border-bottom:3px solid var(--univ-red);box-shadow:0 4px 24px rgba(0,0,0,.6);padding:1.2rem 1.2rem 1rem;}
+.header::after{content:'K';position:absolute;top:-.5rem;right:1rem;font-family:'Playfair Display',serif;font-size:8rem;font-weight:900;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none;}
+.header-inner{max-width:780px;margin:0 auto;}
+.header-univ{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,4vw,1.7rem);font-weight:900;letter-spacing:.06em;color:#FFF;text-shadow:0 2px 12px rgba(0,0,0,.5);}
+.header-dept{font-family:'Noto Serif JP',serif;font-size:clamp(.8rem,2.5vw,1rem);font-weight:700;color:rgba(255,255,255,.85);letter-spacing:.1em;margin-bottom:.8rem;}
+.search-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.6rem;}
+.search-input{flex:1;min-width:180px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.45rem .85rem;color:#FFF;font-family:'Noto Serif JP',serif;font-size:.82rem;outline:none;transition:border .2s;}
+.search-input::placeholder{color:rgba(255,255,255,.5);}.search-input:focus{border-color:rgba(255,255,255,.45);}
+.ctrl-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:.4rem .85rem;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:.78rem;color:#FFF;white-space:nowrap;transition:all .2s;user-select:none;}
+.ctrl-btn:hover{background:rgba(255,255,255,.16);}.ctrl-btn.active{background:rgba(255,255,255,.24);border-color:rgba(255,255,255,.5);font-weight:700;}
+.tab-section{margin-bottom:.6rem;}
+.tab-section-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:rgba(255,255,255,.45);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.35rem;}
+.tab-row{display:flex;gap:.35rem;flex-wrap:wrap;}
+.tab-btn{display:flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.14);border-radius:6px;padding:.32rem .75rem;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:.78rem;color:rgba(255,255,255,.75);transition:all .18s;user-select:none;}
+.tab-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#FFF;}
+.tab-btn.active{background:var(--tab-color,var(--univ-primary));border-color:var(--tab-color,var(--univ-red));color:#FFF;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.4);}
+.tab-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;background:rgba(0,0,0,.25);border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:rgba(255,255,255,.85);line-height:1;}
+.tab-btn.active .tab-count{background:rgba(0,0,0,.3);color:#FFF;}
+.tab-divider{width:1px;height:22px;background:rgba(255,255,255,.15);align-self:center;flex-shrink:0;margin:0 .1rem;}
+.tab-btn.tab-special{border-style:dashed;}.tab-btn.tab-special.active{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.4);border-style:solid;}
+.mode-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem;}
+.hint-text{font-family:'Noto Serif JP',serif;font-size:.72rem;color:rgba(255,255,255,.6);line-height:1.7;}
+/* ── ダッシュボード ── */
+.dashboard{max-width:780px;margin:1rem auto 0;padding:0 1rem;}
+.dash-box{background:var(--bg-card);border:1px solid var(--border2);border-top:2px solid var(--gold);border-radius:4px;padding:.85rem 1.1rem;}
+.dash-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;flex-wrap:wrap;gap:.4rem;}
+.dash-label{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;}
+.dash-count{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text-sub);}
+.dash-count span{color:var(--gold-light);font-weight:700;}
+.progress-bar-wrap{background:rgba(255,255,255,.06);border-radius:4px;height:7px;overflow:hidden;margin-bottom:.65rem;}
+.progress-bar{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--ok),var(--ok2));transition:width .5s ease;}
+.dash-chips{display:flex;gap:.4rem;flex-wrap:wrap;}
+.dash-chip{display:flex;align-items:center;gap:.28rem;font-family:'Noto Serif JP',serif;font-size:.72rem;color:var(--text-sub);}
+.chip-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);flex-shrink:0;transition:background .3s;}
+.chip-dot.mastered{background:var(--ok2);border-color:var(--ok2);}
+.chip-dot.needs-review{background:var(--redo);border-color:var(--redo);}
+.dash-reset{display:block;width:100%;margin-top:.65rem;background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:.35rem;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:.72rem;color:var(--text-dim);transition:all .2s;}
+.dash-reset:hover{border-color:rgba(255,255,255,.22);color:var(--text-sub);}
+/* ── 表示モード ── */
+body.mode-english .reveal-jp,body.mode-english .reveal-exp{display:none !important;}
+body.mode-plain .english-text .s,body.mode-plain .english-text .v,body.mode-plain .english-text .o,body.mode-plain .english-text .c,body.mode-plain .english-text .adv,body.mode-plain .english-text .adj,body.mode-plain .english-text .conj,body.mode-plain .english-text .rel{color:inherit !important;font-weight:700 !important;background:none !important;}
+body.mode-plain .english-text .cl-s,body.mode-plain .english-text .cl-o,body.mode-plain .english-text .cl-rel,body.mode-plain .english-text .cl-adv{border-bottom:none !important;padding-bottom:0 !important;}
+#modePlain.plain-active{background:rgba(255,255,255,.9) !important;color:#002e5d !important;border-color:#FFF !important;font-weight:900 !important;}
+body.mode-blind .english-text{filter:blur(7px);cursor:pointer;transition:filter .2s;}
+body.mode-blind .english-text.unblurred{filter:none;}
+body.mode-blind .english-text::after{content:"（タップで解除）";font-weight:700;color:var(--text-dim);margin-left:.5em;}
+body.mode-blind .english-text.unblurred::after{display:none;}
+body.focusing .case-card{opacity:.3;filter:saturate(.5);transition:opacity .3s;}
+body.focusing .case-card.focused{opacity:1;filter:none;outline:2px solid rgba(218,33,40,.35);}
+.no-results{text-align:center;padding:2.5rem;font-family:'Noto Serif JP',serif;font-size:.9rem;color:var(--text-dim);display:none;}
+.content{max-width:780px;margin:0 auto;padding:1.2rem 1rem 3rem;}
+/* ── 凡例 ── */
+.legend-wrap{max-width:780px;margin:.8rem auto 0;padding:0 1rem;}
+.legend-box{background:var(--bg-card);border:1px solid var(--border2);border-top:2px solid var(--gold);border-radius:4px;padding:.85rem 1.1rem;}
+.legend-label{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.65rem;}
+.legend-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;}
+@media(max-width:400px){.legend-grid{grid-template-columns:repeat(2,1fr);}}
+.legend-item{display:flex;align-items:center;gap:.3rem;font-size:.75rem;color:var(--text-sub);}
+.lchip{display:inline-block;padding:.06rem .38rem;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:600;flex-shrink:0;}
+.lchip-s{background:rgba(255,107,53,.2);color:var(--s);border:1px solid rgba(255,107,53,.5);}
+.lchip-v{background:rgba(30,136,229,.2);color:var(--v);border:1px solid rgba(30,136,229,.5);}
+.lchip-o{background:rgba(255,193,7,.2);color:var(--o);border:1px solid rgba(255,193,7,.5);}
+.lchip-c{background:rgba(67,160,71,.2);color:var(--c);border:1px solid rgba(67,160,71,.5);}
+.lchip-adv{background:rgba(179,157,219,.2);color:var(--adv);border:1px solid rgba(179,157,219,.5);}
+.lchip-adj{background:rgba(244,143,177,.2);color:var(--adj);border:1px solid rgba(244,143,177,.5);}
+.lchip-conj{background:rgba(212,194,0,.15);color:var(--conj);border:1px solid rgba(212,194,0,.4);}
+.lchip-rel{background:rgba(171,71,188,.2);color:var(--rel);border:1px solid rgba(171,71,188,.5);}
+.lchip-cl-s{background:rgba(255,107,53,.15);color:var(--cl-s);border:1px dashed rgba(255,107,53,.7);}
+.lchip-cl-o{background:rgba(201,168,76,.15);color:var(--cl-o);border:1px dashed rgba(201,168,76,.7);}
+.lchip-cl-rel{background:rgba(244,143,177,.15);color:var(--cl-rel);border:1px dashed rgba(244,143,177,.7);}
+.lchip-cl-adv{background:rgba(179,157,219,.15);color:var(--cl-adv);border:1px dashed rgba(179,157,219,.7);}
+/* ── カード ── */
+.case-card{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--univ-primary);border-radius:4px;margin-bottom:1.6rem;overflow:hidden;transition:opacity .3s,filter .3s;}
+.case-card.mastered{border-left-color:var(--ok2);}.case-card.needs-review{border-left-color:var(--redo);}
+.card-head{background:linear-gradient(90deg,rgba(0,46,93,.3) 0%,transparent 100%);border-bottom:1px solid var(--border);padding:.75rem 1.1rem .65rem;display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem;}
+.card-head-left{flex:1;min-width:0;}
+.case-num{font-family:'JetBrains Mono',monospace;font-size:clamp(.88rem,2.8vw,1.05rem);font-weight:700;color:#FFF;background:var(--univ-primary);display:inline-block;padding:.18rem .8rem .18rem .65rem;border-radius:3px;letter-spacing:.12em;margin-bottom:.4rem;}
+.case-num::before{content:'📌 ';letter-spacing:0;}
+.case-title{font-family:'Noto Serif JP',serif;font-size:clamp(.92rem,2.8vw,1.1rem);font-weight:700;color:var(--text);line-height:1.45;margin-bottom:.3rem;}
+.case-meta-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;}
+.case-ref{font-family:'Noto Serif JP',serif;font-size:.7rem;color:var(--text-sub);background:rgba(0,46,93,.25);border:1px solid rgba(0,46,93,.5);padding:.12rem .65rem;border-radius:20px;}
+.mondai-badge{font-family:'Noto Serif JP',serif;font-size:.68rem;font-weight:700;color:#FFF;background:var(--univ-red);padding:.1rem .6rem;border-radius:3px;}
+.diff-badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold);letter-spacing:.05em;}
+.status-badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;border-radius:20px;padding:.12rem .6rem;display:none;}
+.status-badge.mastered{display:inline;background:rgba(46,125,50,.2);border:1px solid var(--ok2);color:var(--ok2);}
+.status-badge.needs-review{display:inline;background:rgba(230,81,0,.15);border:1px solid var(--redo);color:var(--redo);}
+.card-actions{display:flex;gap:.4rem;flex-shrink:0;}
+.act-btn{background:rgba(255,255,255,.06);border:1px solid var(--border2);border-radius:20px;padding:.28rem .7rem;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:.75rem;color:var(--text-sub);transition:all .2s;white-space:nowrap;}
+.act-btn:hover{background:rgba(255,255,255,.12);color:var(--text);}
+.case-source{font-family:'Source Serif 4',serif;font-size:.68rem;font-style:italic;color:var(--text-dim);padding:.42rem 1.1rem;border-bottom:1px solid var(--border);line-height:1.5;}
+.case-source .src-label{font-style:normal;color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;margin-right:.4rem;}
+.card-body{padding:1rem 1.1rem 1.1rem;}
+.english-text{background:var(--bg-inner);border:1px solid var(--border2);border-left:4px solid #1a3a5c;border-radius:3px;padding:.9rem 1rem;margin-bottom:.8rem;font-family:'Source Serif 4',serif;font-size:clamp(.95rem,3vw,1.15rem);font-weight:700;line-height:2.15;word-break:break-word;color:var(--text);}
+.s{color:var(--s);font-weight:800;}.v{color:var(--v);font-weight:800;}.o{color:var(--o);font-weight:800;}.c{color:var(--c);font-weight:800;}
+.adv{color:var(--adv);font-weight:400;}.adj{color:var(--adj);font-weight:400;}.conj{color:var(--conj);font-weight:700;}.rel{color:var(--rel);font-weight:800;}
+.cl-s{border-bottom:2px solid var(--cl-s);padding-bottom:1px;}
+.cl-o{border-bottom:2px solid var(--cl-o);padding-bottom:1px;}
+.cl-rel{border-bottom:2px solid var(--cl-rel);padding-bottom:1px;}
+.cl-adv{border-bottom:2px solid var(--cl-adv);padding-bottom:1px;}
+.reveal-details{border-top:1px solid var(--border2);margin-top:.5rem;}
+.reveal-summary{list-style:none;cursor:pointer;padding:.55rem .9rem;display:flex;align-items:center;justify-content:space-between;font-family:'Noto Serif JP',serif;font-size:.78rem;color:var(--text-sub);transition:background .2s;user-select:none;-webkit-tap-highlight-color:transparent;}
+.reveal-summary::-webkit-details-marker{display:none;}
+.reveal-summary::after{content:'▼';font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--gold);transition:transform .3s;display:inline-block;}
+.reveal-details[open] .reveal-summary::after{transform:rotate(180deg);}
+.reveal-summary:hover{background:rgba(255,255,255,.03);}
+.reveal-inner{padding:.1rem 0 .6rem;}
+.translation{font-family:'Noto Serif JP',serif;font-size:clamp(.8rem,2.3vw,.88rem);color:#E8E3D8;line-height:1.9;padding:.6rem .9rem;border-left:2px solid var(--border2);background:rgba(255,255,255,.015);border-radius:0 3px 3px 0;margin:.3rem 0;}
+.imp-box{background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.18);border-radius:3px;padding:.75rem .95rem;margin-bottom:.75rem;}
+.imp-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.35rem;}
+.imp-box p{font-family:'Noto Serif JP',serif;font-size:clamp(.8rem,2.3vw,.86rem);line-height:1.95;color:var(--text);}
+.imp-box em{font-style:italic;color:#D4C891;}.imp-box strong{color:#FFF;font-weight:700;}
+.logic-box{background:rgba(30,136,229,.05);border:1px solid rgba(30,136,229,.18);border-radius:3px;padding:.75rem .95rem;}
+.logic-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#64B5F6;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.4rem;}
+.logic-formula{font-family:'JetBrains Mono',monospace;font-size:clamp(.72rem,2vw,.78rem);color:#90CAF9;line-height:1.75;margin-bottom:.45rem;white-space:pre-wrap;word-break:break-word;}
+.logic-box p{font-family:'Noto Serif JP',serif;font-size:clamp(.78rem,2.2vw,.84rem);color:var(--text-sub);line-height:1.9;}
+.logic-box p::before{content:'▶ ';color:var(--v);}
+.selfcheck{margin-top:.75rem;padding:.75rem .95rem;border:1px solid var(--border2);border-radius:3px;background:rgba(255,255,255,.02);}
+.selfcheck-title{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--text-sub);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.45rem;}
+.selfcheck ul{padding-left:1.2rem;}
+.selfcheck li{font-family:'Noto Serif JP',serif;font-size:clamp(.78rem,2.2vw,.84rem);color:var(--text-sub);line-height:1.8;margin:.25rem 0;}
+.prog-btns{display:flex;gap:.55rem;margin-top:.9rem;padding-top:.85rem;border-top:1px solid var(--border2);flex-wrap:wrap;}
+.prog-btn{flex:1;min-width:110px;padding:.5rem;border-radius:3px;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:.8rem;font-weight:700;border:1.5px solid;transition:all .2s;text-align:center;}
+.prog-ok{background:rgba(46,125,50,.1);border-color:var(--ok);color:var(--ok2);}.prog-ok:hover{background:rgba(46,125,50,.25);}.prog-ok.sel{background:var(--ok);color:#FFF;}
+.prog-redo{background:rgba(230,81,0,.08);border-color:var(--redo);color:var(--redo);}.prog-redo:hover{background:rgba(230,81,0,.2);}.prog-redo.sel{background:var(--redo);color:#FFF;}
+.footer{background:linear-gradient(135deg,var(--univ-dark),var(--univ-primary) 55%,var(--univ-red));border-top:2px solid var(--univ-red);padding:1.8rem 1.2rem;margin-top:1rem;}
+.footer-inner{max-width:780px;margin:0 auto;}
+.footer-title{font-family:'Noto Serif JP',serif;font-size:.92rem;font-weight:700;color:#FFF;margin-bottom:.6rem;}
+.footer-body{font-family:'Noto Serif JP',serif;font-size:.8rem;color:rgba(255,255,255,.82);line-height:1.85;margin-bottom:.6rem;}
+details.footer-more summary{font-family:'Noto Serif JP',serif;font-size:.78rem;color:rgba(255,255,255,.7);cursor:pointer;margin-bottom:.5rem;}
+details.footer-more ol{font-family:'Noto Serif JP',serif;font-size:.78rem;color:rgba(255,255,255,.75);line-height:1.9;padding-left:1.3rem;margin-bottom:.7rem;}
+.footer-progress{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:rgba(255,255,255,.65);margin-bottom:.4rem;}
+.footer-credit{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.45);}
+@media print{.header,.dashboard,.legend-wrap,.card-actions,.prog-btns{display:none !important;}body{background:#FFF;color:#000;}.case-card{box-shadow:none;break-inside:avoid;border:1px solid #CCC;}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-univ">KEIO UNIVERSITY</div>
+    <div class="header-dept">医学部 2026 ／ 入試英語 重要構文ビジュアル解析 厳選10題</div>
+    <div class="search-row">
+      <input id="searchInput" class="search-input" placeholder="キーワード検索（例：倒置 / 分詞構文 / 関係詞 / 仮定法）">
+      <button type="button" class="ctrl-btn" id="btnAll">ALL</button>
+      <button type="button" class="ctrl-btn" id="btnShuffle">🔀 シャッフル3枚</button>
+    </div>
+    <div class="tab-section">
+      <div class="tab-section-label">📂 カテゴリーで絞り込む</div>
+      <div class="tab-row" id="tagBar"></div>
+    </div>
+    <div class="mode-row">
+      <button type="button" class="ctrl-btn active" id="modeNormal">通常</button>
+      <button type="button" class="ctrl-btn" id="modeEnglish">英文のみ</button>
+      <button type="button" class="ctrl-btn" id="modeBlind">暗記テスト（ぼかし）</button>
+      <button type="button" class="ctrl-btn" id="btnShowAll">和訳・解説を全表示</button>
+      <button type="button" class="ctrl-btn" id="btnHideAll">全て隠す</button>
+    </div>
+    <div class="mode-row">
+      <button type="button" class="ctrl-btn" id="modePlain" style="border-color:rgba(255,255,255,.5);letter-spacing:.04em;">⬜ 白文表示（指導者モード）</button>
+      <span style="font-family:'Noto Serif JP',serif;font-size:.72rem;color:rgba(255,255,255,.55);align-self:center;">← カラー解析を隠して英文を提示。もう一度押すと復元。</span>
+    </div>
+    <div class="hint-text">①「英文のみ」で色と下線から構造を掴む → ②日本語訳で確認 → ③解説の構造図で論理を追う → ④理解度を記録</div>
+  </div>
+</header>
+
+<div class="dashboard">
+  <div class="dash-box">
+    <div class="dash-top">
+      <div class="dash-label">📊 学習進捗</div>
+      <div class="dash-count">理解済み <span id="masteredCount">0</span> / <span id="totalCount">10</span></div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+    <div class="dash-chips" id="dashChips"></div>
+    <button type="button" class="dash-reset" onclick="resetAll()">↺ すべての進捗をリセット</button>
+  </div>
+</div>
+
+<div class="legend-wrap">
+  <div class="legend-box">
+    <div class="legend-label">🎨 カラーコード凡例</div>
+    <div class="legend-grid">
+      <div class="legend-item"><span class="lchip lchip-s">S</span>主語</div>
+      <div class="legend-item"><span class="lchip lchip-v">V</span>動詞</div>
+      <div class="legend-item"><span class="lchip lchip-o">O</span>目的語</div>
+      <div class="legend-item"><span class="lchip lchip-c">C</span>補語</div>
+      <div class="legend-item"><span class="lchip lchip-adv">副詞</span>副詞句</div>
+      <div class="legend-item"><span class="lchip lchip-adj">形容詞</span>形容詞句</div>
+      <div class="legend-item"><span class="lchip lchip-conj">接続詞</span>接続詞</div>
+      <div class="legend-item"><span class="lchip lchip-rel">関係詞</span>関係詞</div>
+      <div class="legend-item"><span class="lchip lchip-cl-s">主語節</span>下線：橙</div>
+      <div class="legend-item"><span class="lchip lchip-cl-o">目的語節</span>下線：金</div>
+      <div class="legend-item"><span class="lchip lchip-cl-rel">形容詞節</span>下線：ピンク</div>
+      <div class="legend-item"><span class="lchip lchip-cl-adv">副詞節</span>下線：ラベンダー</div>
+    </div>
+  </div>
+</div>
+
+<div class="no-results" id="noResults">該当するCaseが見つかりません。</div>
+
+<main class="content" id="caseList">
+
+<!-- ===== CASE 01 ===== -->
+<article class="case-card" id="card-1" data-tags="動名詞主語">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 01</div>
+      <div class="case-title">動名詞主語 ＋ be of＋抽象名詞 ＋ whether A or B の挿入</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅰ</span>
+        <span class="case-ref">Paragraph ①｜シナントロープの生存</span>
+        <span class="diff-badge">★★★★☆</span>
+        <span class="status-badge" id="badge-1"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(1)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅰ（都市とシナントロープ）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-1">
+      <span class="cl-s"><span class="v">Appreciating</span>
+      <span class="o">their survival</span>
+      <span class="adv">in our <span class="adj">built</span> environment</span></span>
+      — <span class="adv"><span class="conj">whether</span> <span class="s">they</span> <span class="v">live</span> <span class="adv">alongside us</span> <span class="conj">or</span> <span class="adv">despite us</span></span> —
+      <span class="v">can be</span>
+      <span class="adv">of <span class="adj">vital</span> importance</span>
+      <span class="adv">to B</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">私たちの作り出した環境の中での彼らの生存——それが私たちと共存しているものであれ、私たちに反してのものであれ——を理解することは、B にとって極めて重要なことであり得る。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><strong>動名詞句</strong> <em>Appreciating their survival in our built environment</em>（橙下線）が文全体の S。述語は <em><strong>can be of vital importance</strong></em>——<em><strong>be of＋抽象名詞</strong></em>「〜の性質を持つ」（<em>of vital importance</em> = <em>vitally important</em>）。ダッシュ内の <em><strong>whether A or B</strong></em> は S を補足する<strong>挿入節</strong>——S と V の間に割り込む形で使われており、長い主語に続く挿入が読み飛ばしやすい難所。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">S（動名詞句・橙下線）
+[Appreciating their survival in our built environment]
+  ↓ ダッシュ挿入（whether A or B）
+  — whether they live alongside us or despite us —
+  ↑ 「共存してであれ、逆らってであれ」← どちらにせよ重要
+
+V：can be
+C：of vital importance（= vitally important）
+  ← be of + 抽象名詞 ← 慶應頻出
+  例：be of use（= useful） / be of value（= valuable）</div>
+          <p>「シナントロープが人間に都合よく生きているかどうかに関わらず、その生存を理解することが重要だ」——挿入節が筆者の中立的な姿勢を示す。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li>動名詞句（橙下線）を S とし、can be を V とした文型（SVC）を確認できる？</li>
+            <li><em>be of vital importance</em> を形容詞を使って言い換えられる？</li>
+            <li>ダッシュ内の <em>whether A or B</em> を取り除いても文が成立することを確認できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(1,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(1,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ===== CASE 02 ===== -->
+<article class="case-card" id="card-2" data-tags="分詞構文">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 02</div>
+      <div class="case-title">受動の分詞構文 Armed with… ＋ 受動態 ＋ that 節修飾</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅰ</span>
+        <span class="case-ref">Paragraph ③｜ナイトツアー</span>
+        <span class="diff-badge">★★★★☆</span>
+        <span class="status-badge" id="badge-2"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(2)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅰ（都市とシナントロープ）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-2">
+      <span class="cl-adv"><span class="adj">Armed</span>
+      <span class="adv">with flashlights and headphones</span></span>,
+      <span class="s">we</span>
+      <span class="v">were guided</span>
+      <span class="adv">by a <span class="adj">35-minute</span> <span class="adj">audio</span> tour</span>
+      <span class="cl-rel"><span class="rel">that</span>
+      <span class="v">highlighted</span>
+      <span class="o">…</span></span>
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">懐中電灯とヘッドホンを装備し、私たちは〔…を〕際立たせた35分間の音声ツアーに案内された。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><em><strong>Armed with flashlights and headphones</strong></em>（ラベンダー下線）は<strong>受動の分詞構文</strong>——省略形は <em>(Being) Armed with…</em>。意味上の主語は主節の S（<em>we</em>）。「Armed with ～」の分詞構文は頻出——主節との意味関係（付帯状況：装備した状態で）を瞬時に取れるかが鍵。<em><strong>that 節</strong></em>（ピンク下線）は <em>a 35-minute audio tour</em> を先行詞とする関係詞節。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">[(Being) Armed with flashlights and headphones]（受動の分詞構文・ラベンダー下線）
+  ↑ 意味上の主語 = we / As we were armed with…（付帯状況）
+
+we（S）  were guided（受動態・V）
+  by a 35-minute audio tour（動作主）
+        ↓（ピンク下線・that 関係詞節）
+  [that highlighted …]（先行詞：the audio tour）
+
+判別ルール：
+  文頭が過去分詞 → 受動の分詞構文（Being が省略）
+  文頭が現在分詞 → 能動の分詞構文</div>
+          <p>「Being を補えるか」「意味上の主語を主節の S と同定できるか」——受動分詞構文は医学部記述の採点ポイント。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li><em>Armed</em> を <em>(Being) Armed</em> に補完し、<em>As we were armed with…</em> に書き換えられる？</li>
+            <li>関係詞節 <em>that highlighted…</em> の先行詞（the audio tour）を特定できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(2,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(2,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ===== CASE 03 ===== -->
+<article class="case-card" id="card-3" data-tags="対比構文">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 03</div>
+      <div class="case-title">対比構文（セミコロン＋here の指示）＋ result in ＋ 指示語処理</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅰ</span>
+        <span class="case-ref">Paragraph ⑧｜アライグマの行動変容（設問14直結）</span>
+        <span class="diff-badge">★★★★☆</span>
+        <span class="status-badge" id="badge-3"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(3)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅰ（都市とシナントロープ）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-3">
+      <span class="adv">In the countryside</span>,
+      <span class="s">raccoons</span>
+      <span class="v">would fish</span>
+      <span class="adv">at waters like this</span>;
+      <span class="adv">here</span>,
+      <span class="s"><span class="adj">human</span> design</span>
+      <span class="v">has resulted in</span>
+      <span class="o"><span class="adj">new</span> animal behavior</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">田舎では、アライグマはこのような水辺で魚を獲るものだろうが、ここ（都市）では、人間のデザインが新たな動物行動をもたらした。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><strong>セミコロン（;）</strong>が <em>In the countryside（田舎）</em> vs <em>here（都市）</em> という対比をつなぐ。<em><strong>would fish</strong></em> は仮定法的習慣の <em>would</em>（「〜するものだろう」）。<em><strong>result in</strong></em>「〜をもたらす」。指示語 <em><strong>here</strong></em> の指す内容を文脈から特定することが<strong>設問14に直結</strong>——指示語処理が最重要難所。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">前半：In the countryside, raccoons would fish at waters like this
+  ↑ 「田舎」← 自然の文脈（would = 仮定法的習慣）
+
+;（セミコロン＝対比の区切り）
+
+後半：here, human design has resulted in new animal behavior
+  ↑ here ← 「都市（Central Park の池）」← 指示語処理！
+  result in（他動詞句）= bring about / cause
+
+対比軸：田舎の自然的行動 ←→ 都市で人間設計が生んだ新行動
+result in vs result from：
+  result in X ← 「X をもたらす（原因→結果）」
+  result from X ← 「X から生じる（結果←原因）」</div>
+          <p><em>here</em> が何を指すかを文脈から確定——「都市＝人工的な力が野生動物の行動を書き換える場所」という論旨の核心。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li><em>would fish</em> の <em>would</em> が「仮定法的習慣」であることを説明できる？</li>
+            <li><em>here</em> が指す場所を本文の文脈から一言で答えられる？</li>
+            <li><em>result in</em>（〜をもたらす）と <em>result from</em>（〜から生じる）の方向を区別できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(3,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(3,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ===== CASE 04 ===== -->
+<article class="case-card" id="card-4" data-tags="動名詞主語">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 04</div>
+      <div class="case-title">動名詞主語（Just going…）＋ SVOO（show you something）</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅰ</span>
+        <span class="case-ref">Paragraph ⑨｜視点と心構えの変化</span>
+        <span class="diff-badge">★★★★☆</span>
+        <span class="status-badge" id="badge-4"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(4)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅰ（都市とシナントロープ）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-4">
+      <span class="cl-s"><span class="adv">Just</span>
+      <span class="v">going</span>
+      <span class="adv">at a <span class="adj">slightly different</span> time</span>
+      <span class="adv">with a <span class="adj">slightly different</span> mindset</span></span>
+      <span class="v">can show</span>
+      <span class="o">you</span>
+      <span class="o">something <span class="adj">remarkable</span></span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">ほんの少し違う時間帯に、ほんの少し違う心構えで行くだけで、驚くべきものをあなたに見せてくれるだろう。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><em><strong>Just going at a slightly different time with a slightly different mindset</strong></em>（橙下線）が動名詞句の S。動詞は <em><strong>can show</strong></em>——<strong>SVOO の第4文型</strong>（show O1 O2：O1 に O2 を見せる）。O1 = <em>you</em>、O2 = <em>something remarkable</em>。<em>Just</em> が「ただ〜するだけで」という条件の軽さを強調——医学部は SVOO の把握力を問う傾向あり。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">S（動名詞句・橙下線）
+[Just going at a slightly different time with a slightly different mindset]
+  ↑ Just ← 「たった〜するだけで」← 条件の軽さを強調
+
+V：can show（SVOO・第4文型）
+  O1：you（間接目的語）
+  O2：something remarkable（直接目的語）
+
+SVOO → SVO への転換：
+  show you something → show something to you
+
+「ほんの少しの視点変化」→「驚くべき発見」← 医学的洞察の比喩</div>
+          <p>「Just」の一語が核心——わずかな視点の変化が発見をもたらすという、本文の実践的結論を凝縮。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li>動名詞句の S を特定し、can show を V とした SVOO の文型を確認できる？</li>
+            <li>O1（you）と O2（something remarkable）を区別し、<em>show O1 O2</em> の意味を言える？</li>
+            <li><em>Just</em> が示す「条件の軽さ」が筆者のメッセージを体現していることを説明できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(4,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(4,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ===== CASE 05 ===== -->
+<article class="case-card" id="card-5" data-tags="形式主語・that節">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 05</div>
+      <div class="case-title">形式主語 it ＋ 受動態 ＋ how 節（間接疑問）</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅱ</span>
+        <span class="case-ref">Paragraph ①｜"Busy Feeling" の見落とし</span>
+        <span class="diff-badge">★★★★☆</span>
+        <span class="status-badge" id="badge-5"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(5)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅱ（"Busy Feeling"）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-5">
+      <span class="s">It</span>'<span class="v">s</span> <span class="c">possible</span>
+      <span class="cl-s"><span class="conj">that</span>
+      <span class="s">the <span class="adj">most overwhelmed</span> people</span>
+      <span class="v">weren't even asked</span>
+      <span class="cl-o"><span class="adv">how</span>
+      <span class="s">they</span>
+      <span class="v">felt</span></span></span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">最も追い詰められた人々は、自分がどのように感じているかさえ尋ねられなかった可能性がある。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><em><strong>It's possible that …</strong></em> は<strong>形式主語構文</strong>——真主語は橙下線の <em>that 節</em>。<em>that 節</em> 内は <em><strong>weren't even asked</strong></em>（受動態）＋ <em><strong>how they felt</strong></em>（間接疑問・金下線）。<em><strong>even</strong></em>「さえ」が強調——「感じ方を尋ねることさえしなかった」という研究の盲点。医学部レベルで確実に問われる3層構造（形式主語→受動態→間接疑問）。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">It（形式主語）  's  possible（C）
+                           ↓ 真主語（橙下線）
+[that the most overwhelmed people weren't even asked
+                              ↓ 受動態（ask O how → be asked how）
+            how they felt]（間接疑問・金下線 = asked の O）
+
+3層構造：
+  ① It is possible that …（形式主語）
+  ② weren't even asked（受動態・even が強調）
+  ③ how they felt（間接疑問 = 名詞節）
+
+「最も困っている人の声が聞かれなかった」← 研究設計の問題点</div>
+          <p>形式主語の陰に隠れた3層構造を透視する読解力——医学・疫学論文の批判的読解として典型的な構造。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li>形式主語 <em>it</em> の真主語（that 節）を特定できる？</li>
+            <li><em>weren't even asked</em> の能動態（<em>didn't even ask them how…</em>）に書き換えられる？</li>
+            <li><em>how they felt</em>（間接疑問）が <em>asked</em> の O になっていることを確認できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(5,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(5,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ===== CASE 06 ===== -->
+<article class="case-card" id="card-6" data-tags="SVC・並列">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 06</div>
+      <div class="case-title">SVC ＋ that 節補語 ＋ 内部の並列構造（women do… and men do…）</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅱ</span>
+        <span class="case-ref">Paragraph ②｜50年間の主要な変化</span>
+        <span class="diff-badge">★★★★☆</span>
+        <span class="status-badge" id="badge-6"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(6)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅱ（"Busy Feeling"）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-6">
+      <span class="s">The <span class="adj">headline</span> changes
+      <span class="adv">over the <span class="adj">last</span> 50 years</span></span>
+      <span class="v">are</span>
+      <span class="cl-o"><span class="conj">that</span>
+      <span class="s">women</span> <span class="v">do</span> <span class="adv">…</span>
+      <span class="conj">and</span>
+      <span class="s">men</span> <span class="v">do</span> <span class="adv">…</span></span>
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">過去50年間の主要な変化は、女性が〔…〕し、男性が〔…〕するということである。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p>文型は <strong>SVC</strong>——S = <em>The headline changes over the last 50 years</em>、V = <em>are</em>、C = <em><strong>that 節</strong></em>（金下線）。<em>that</em> は<strong>補語節を導く接続詞</strong>（名詞節の that）。C となる that 節の中に <em><strong>women do… and men do…</strong></em> という<strong>並列</strong>が埋め込まれており、節の境界が見えにくい。<em>headline</em>（最も注目すべき）という形容詞的用法にも注目。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">S：The headline changes over the last 50 years
+  ↑ headline（形容詞）= 「主要な・最も注目すべき」
+
+V：are（SVC の be 動詞）
+
+C（that 節・金下線）：
+  [that women do ___
+        and
+        men do ___]
+  ↑ that 節の中に and による並列 ← 構造把握の難所
+
+SVC で C が that 節になるパターン：
+  The problem is that … / The change is that … ← 今回</div>
+          <p>「過去50年の変化の要点は…だ」——論文の「主張の提示」に頻繁に使われる SVC + that 節補語。節内の並列が構造把握を妨げる。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li>文型（SVC）を確認し、C が that 節であることを言える？</li>
+            <li>that 節内の <em>women do…</em> と <em>men do…</em> が and で並列されていることを図示できる？</li>
+            <li><em>headline</em> の形容詞的用法（「最も重要な」）を確認できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(6,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(6,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ===== CASE 07 ===== -->
+<article class="case-card" id="card-7" data-tags="分詞構文">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 07</div>
+      <div class="case-title">過去分詞による後置修飾（dominated by）＋ 逆接 but ＋ obey limits</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅱ</span>
+        <span class="case-ref">Paragraph ③｜農業・製造業時代の労働（dominated のかかり先に注意）</span>
+        <span class="diff-badge">★★★★☆</span>
+        <span class="status-badge" id="badge-7"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(7)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅱ（"Busy Feeling"）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-7">
+      <span class="adv">In <span class="adj">former</span> eras</span>,
+      <span class="cl-adv"><span class="adj">dominated</span>
+      <span class="adv">by farming or manufacturing</span></span>,
+      <span class="s">labour</span>
+      <span class="v">could certainly be</span>
+      <span class="c"><span class="adj">physically</span> punishing</span>
+      — <span class="conj">but</span>
+      <span class="s">it</span>
+      <span class="v">obeyed</span>
+      <span class="o"><span class="adj">certain</span> limits</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">農業や製造業が支配的だった以前の時代において、労働は確かに身体的に過酷なものであり得た——しかしそれは一定の限界に従っていた。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><em>In former eras</em> に続く <em><strong>dominated by farming or manufacturing</strong></em>（ラベンダー下線）の<strong>かかり先</strong>に注意——これは <em>labour</em>（主語）ではなく <em><strong>eras</strong></em>（時代）を後置修飾する過去分詞句。<em>eras dominated by …</em>「農業・製造業に支配された時代」。<em>labour</em> を修飾すると誤読しやすい典型的な難所。<em><strong>obey limits</strong></em>（限界に従う）は抽象名詞の慣用的表現。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">In former eras（副詞句）
+  , [dominated by farming or manufacturing]（過去分詞・後置修飾）
+    ↑ 修飾先は eras ← NOT labour
+    = In former eras [which were dominated by farming or manufacturing]
+
+S：labour
+V：could certainly be
+C：physically punishing（身体的に過酷）
+
+— but（強い逆接・ダッシュで強調）—
+
+it（= labour）  obeyed（V）  certain limits（O）
+  ↑ obey limits ← 「限界に従う」← 日没・体力の自然な限界
+
+対比：過酷（physically punishing）← → でも限界あり（obeyed limits）
+← 現代の「バウンダリーなし」の忙しさとの対比が論旨の核</div>
+          <p><em>dominated by</em> の修飾先を誤読すると文全体の構造が崩れる——挿入による S-V の引き離しと抽象名詞の動詞的処理が同時に問われる難所。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li><em>dominated by farming or manufacturing</em> が <em>eras</em> を修飾することを確認できる？（<em>labour</em> ではない）</li>
+            <li><em>obey limits</em> を「一定の限界に縛られていた」と動詞的に読める？</li>
+            <li>ダッシュ後の <em>but</em>（過酷だが限界あり）の逆接内容を整理できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(7,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(7,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ===== CASE 08 ===== -->
+<article class="case-card" id="card-8" data-tags="仮定法・比較">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 08</div>
+      <div class="case-title">SVC ＋ 比較級 less well than ＋ 仮定法過去（if we weren't so rushed）</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅱ</span>
+        <span class="case-ref">Paragraph ④｜Busy Feeling の逆説（本問最重要）</span>
+        <span class="diff-badge">★★★★★</span>
+        <span class="status-badge" id="badge-8"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(8)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅱ（"Busy Feeling"）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-8">
+      <span class="s">The result</span>
+      <span class="v">is</span>
+      <span class="cl-o"><span class="conj">that</span>
+      <span class="s">we</span>
+      <span class="v">handle</span>
+      <span class="o">our tasks</span>
+      <span class="adv"><span class="adv">less well</span>
+      <span class="conj">than</span>
+      <span class="cl-adv"><span class="conj">if</span>
+      <span class="s">we</span>
+      <span class="v">weren't</span>
+      <span class="adv">so rushed</span></span></span></span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">結果として、もし私たちがこれほど急かされていなかったとした場合よりも、タスクをうまく処理できていないということになる。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p>本問最重要構文（★★★★★）。<strong>SVC</strong>（S = The result, V = is, C = that 節）の C 節の中に <em><strong>less well than if…</strong></em> という<strong>比較＋仮定法</strong>が埋め込まれた三重構造。<em><strong>less well</strong></em>（より上手くなく）は <strong>劣勢比較</strong>。<em><strong>than if we weren't so rushed</strong></em> は仮定法過去——「もし急いでいなかったとしたら（と比べて）」という現実に反する比較基準。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">S：The result
+V：is（SVC）
+C：[that 節（金下線）]
+  we handle our tasks
+
+  less well（劣勢比較）← 「より上手くなく」
+  ↓ 比較基準
+  than [if we weren't so rushed]（仮定法過去・ラベンダー下線）
+        ↑ weren't ← 仮定法過去（現実は we are rushed）
+        = 「もし急いでいなかったとすれば（それより下手）」
+
+三重構造：
+  ① SVC（that 節補語）
+  ② less well の劣勢比較
+  ③ than if … の仮定法（現実反対条件）
+
+皮肉（ironic）：急げば急ぐほど → より下手になる ← 逆説</div>
+          <p>仮定法を含む比較構文——慶應医学部が「本問最重要」と位置づける構造。<em>less well</em> と <em>than if</em> の組み合わせを瞬時に分解できるかが合否を分ける。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li>SVC の文型を確認し、C の that 節の中の比較基準（than 以下）を特定できる？</li>
+            <li><em>less well</em> が「より上手くなく」という劣勢比較であることを説明できる？</li>
+            <li><em>weren't</em>（仮定法過去）が「現実は急いでいる」という現実反対条件を示していることを確認できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(8,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(8,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ===== CASE 09 ===== -->
+<article class="case-card" id="card-9" data-tags="仮定法・比較">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 09</div>
+      <div class="case-title">So ＋ SVC ＋ 仮定法過去を含む比較（less … than if we weren't）</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅱ</span>
+        <span class="case-ref">Paragraph ⑤｜Busy Feeling の逆説的帰結（結論文・最重要）</span>
+        <span class="diff-badge">★★★★★</span>
+        <span class="status-badge" id="badge-9"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(9)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅱ（"Busy Feeling"）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-9">
+      <span class="adv">So</span>
+      <span class="s">the <span class="adj">ironic</span> consequence
+      <span class="adv">of the "<span class="adj">busy</span> feeling"</span></span>
+      <span class="v">is</span>
+      <span class="cl-o"><span class="conj">that</span>
+      <span class="s">we</span>
+      <span class="v">handle</span>
+      <span class="o">our to-do lists</span>
+      <span class="adv"><span class="adv">less</span> <span class="adv">well</span>
+      <span class="conj">than</span>
+      <span class="cl-adv"><span class="conj">if</span>
+      <span class="s">we</span>
+      <span class="v">weren't</span>
+      <span class="adv">so rushed</span></span></span></span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">だから「忙しい感覚」の皮肉な結果とは、もし私たちがこれほど急かされていなかったとした場合よりも、やるべきことリストをうまく処理できないということなのだ。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p>PDF「最重要」指定の★★★★★構文。<em><strong>So</strong></em> が前段落の論旨を受けて結論を導く——「だから（それゆえ）」。<strong>SVC</strong> の C は that 節。that 節内の核心は <em><strong>less well than if we weren't so rushed</strong></em>——<em><strong>less … than if …</strong></em> という「仮定法を含む劣勢比較」。C08 が「結果（The result is…）」を提示するなら、C09 は「皮肉な帰結（So the ironic consequence is…）」として論旨をまとめる本文の<strong>クライマックス文</strong>。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">So（結論の接続副詞）← 前段落の論旨を受けて
+
+SVC：
+S：the ironic consequence of the "busy feeling"
+  ↑ ironic（皮肉な）= 「急ぐほど下手になる」という逆説
+V：is
+C：[that we handle our to-do lists less well
+           than if we weren't so rushed]
+           ↑ 仮定法過去（weren't）← 現実は we are so rushed
+
+C08 vs C09 の関係：
+  C08 The result is that …（構造の骨格を学ぶ）
+  C09 So the ironic consequence is that …（論旨の流れを学ぶ）
+  ← セットで理解して記述問題に対応
+
+「急ぐほど → より下手になる」← ironic（皮肉）= 論文の結論</div>
+          <p>C08 と C09 はセットで学ぶことで、「構造の理解」と「論旨の流れの理解」の両方が身につく。医学部記述問題は両方を問う。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li><em>So</em> が示す「前段落からの論旨の流れ」を一文で説明できる？</li>
+            <li><em>less well than if we weren't so rushed</em> を日本語で正確に訳せる？</li>
+            <li>C08（The result is…）と C09（So the ironic consequence is…）の論理的関係を説明できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(9,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(9,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ===== CASE 10 ===== -->
+<article class="case-card" id="card-10" data-tags="what節主語">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 10</div>
+      <div class="case-title">what 節主語 ＋ SVC ＋ 譲歩節（even if it meant a longer wait）</div>
+      <div class="case-meta-row">
+        <span class="mondai-badge">問題Ⅱ</span>
+        <span class="case-ref">Paragraph ⑦｜本当に求められているもの（空所補充）</span>
+        <span class="diff-badge">★★★★☆</span>
+        <span class="status-badge" id="badge-10"></span>
+      </div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(10)">集中</button></div>
+  </div>
+  <div class="case-source"><span class="src-label">出典</span>慶應義塾大学医学部 2026年度入試英語 問題Ⅱ（"Busy Feeling"）</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-10">
+      <span class="conj">But</span>
+      <span class="cl-s"><span class="rel">what</span>
+      <span class="s">they</span>
+      <span class="adv">really</span>
+      <span class="v">wanted</span></span>
+      <span class="v">was</span>
+      <span class="o">（　　）</span>
+      — <span class="cl-adv"><span class="conj">even if</span>
+      <span class="s">it</span>
+      <span class="v">meant</span>
+      <span class="o">a <span class="adj">longer</span> wait</span></span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">しかし、彼らが本当に望んでいたのは（　　）だった——たとえそれが待ち時間が長くなることを意味するとしても。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><em><strong>what they really wanted</strong></em>（橙下線）は <strong>what 節が主語（S）</strong>——<em>what</em> は関係代名詞で「彼らが本当に望んでいたもの（こと）」。V = <em><strong>was</strong></em>、C = <em>（　　）</em>（空所補充問題として出題）。<em><strong>even if it meant a longer wait</strong></em>（ラベンダー下線）は<strong>譲歩節</strong>——「たとえ〜であるとしても」。<em><strong>mean doing</strong></em>「〜することになる」という用法に注意。what 節主語は慶應医学部で頻出。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">S（what 節・橙下線）：
+[what they really wanted]
+  ↑ what = 「〜もの・こと」← 関係代名詞（= the thing that）
+  = The thing that they really wanted
+
+V：was（SVC の be 動詞）
+C：（　　）← 空所（文脈から内容を推定）
+
+— [even if it meant a longer wait]（譲歩節・ラベンダー下線）
+  ↑ even if ← 「たとえ〜であっても」← 強い譲歩
+  ↑ it = （　　）の内容（前の C を受ける）
+  ↑ mean a longer wait ← 「待ち時間が長くなる」← mean doing の用法
+
+But が示す「逆接」：
+  期待（速さ・効率）←→ 本当に望むもの（（　　））</div>
+          <p>空所（C）に入る内容を前後の文脈（「速さより〇〇」という逆説）から論理的に推定する——what 節主語という構文は医学部で繰り返し出題される。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul>
+            <li><em>what they really wanted</em>（S）を <em>The thing that they really wanted</em> に言い換えられる？</li>
+            <li><em>even if it meant a longer wait</em> の <em>mean</em> の用法（<em>mean doing</em>）を確認できる？</li>
+            <li>文脈から空所（C）に入る内容を論理的に推定できる？</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(10,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(10,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-title">慶應義塾大学医学部　合格への道標</div>
+    <div class="footer-body">今回の10選は2つの問題文から構成されています。問題Ⅰ「都市とシナントロープ」では動名詞主語・受動分詞構文・対比・SVOO という構造的多様性が、問題Ⅱ「Busy Feeling」では形式主語・SVC＋that 節・仮定法比較・what 節主語という論理的精密さが試されています。</div>
+    <div class="footer-body">慶應医学部の英語が問うのは、複雑に絡み合う病態から根源的な原理を見つけ出す力——まさに医師の思考そのものです。<em>Just going at a slightly different time with a slightly different mindset can show you something remarkable.</em> 視点を変えるだけで世界が変わる。一文一文との誠実な格闘の先に、信濃町の学び舎へと続く門が開いています。</div>
+    <details class="footer-more">
+      <summary>今日の使い方（おすすめルーティン）</summary>
+      <ol>
+        <li>問題Ⅰ（C01〜C04）と問題Ⅱ（C05〜C10）をタブで切り替えて学習</li>
+        <li>「英文のみ」モードで色と下線から論理骨格を自力で読む</li>
+        <li>日本語訳 → ロジカル・アイの構造図で因果・対比を確認</li>
+        <li>★★★★★ の C08・C09 は必ずセットで復習する</li>
+        <li>「⬜ 白文表示」で先生のように解説してみる（指導者モード）</li>
+      </ol>
+    </details>
+    <div class="footer-progress" id="footerProgress">進捗：読み込み中…</div>
+    <div class="footer-credit">©2026 Sapphire ONLINE Studies English Project</div>
+  </div>
+</footer>
+
+<script>
+const TOTAL  = 10;
+const LS_KEY = "keio_med2026_v2";
+const TAB_COLORS = {
+  "すべて":"#002e5d",
+  "動名詞主語":"#1565C0",
+  "分詞構文":"#00695C",
+  "対比構文":"#6A1B9A",
+  "形式主語・that節":"#BF360C",
+  "SVC・並列":"#1B5E20",
+  "仮定法・比較":"#880E4F",
+  "what節主語":"#E65100",
+  "⚠ 要復習":"#BF360C","○ 未学習":"#37474F"
+};
+let statusMap={}, activeTag='all', focusedId=null;
+function loadProgress(){try{statusMap=JSON.parse(localStorage.getItem(LS_KEY)||"{}");}catch(e){statusMap={};}for(let i=1;i<=TOTAL;i++){if(!statusMap[i])statusMap[i]="none";}}
+function saveProgress(){localStorage.setItem(LS_KEY,JSON.stringify(statusMap));}
+function initDashboard(){const chips=document.getElementById('dashChips');chips.innerHTML='';for(let i=1;i<=TOTAL;i++){const d=document.createElement('div');d.className='dash-chip';const dot=document.createElement('div');dot.className='chip-dot';dot.id='dot-'+i;const lbl=document.createElement('span');lbl.textContent='C'+String(i).padStart(2,'0');d.appendChild(dot);d.appendChild(lbl);chips.appendChild(d);}}
+function updateDashboard(){let mastered=0;for(let i=1;i<=TOTAL;i++){const s=statusMap[i]||"none";const dot=document.getElementById('dot-'+i);if(dot)dot.className='chip-dot'+(s==='mastered'?' mastered':s==='needs-review'?' needs-review':'');if(s==='mastered')mastered++;}const pct=Math.round((mastered/TOTAL)*100);document.getElementById('masteredCount').textContent=mastered;document.getElementById('progressBar').style.width=pct+'%';document.getElementById('footerProgress').textContent=`進捗：理解済み ${mastered} / ${TOTAL}（${pct}%）`;}
+function setStatus(num,newStatus,btn){const prev=statusMap[num];statusMap[num]=(prev===newStatus)?"none":newStatus;saveProgress();const card=document.getElementById('card-'+num);const badge=document.getElementById('badge-'+num);card.querySelectorAll('.prog-btn').forEach(b=>b.classList.remove('sel'));card.classList.remove('mastered','needs-review');badge.className='status-badge';badge.textContent='';const s=statusMap[num];if(s==='mastered'){card.classList.add('mastered');badge.classList.add('mastered');badge.textContent='✅ 理解済み';if(btn.classList.contains('prog-ok'))btn.classList.add('sel');}else if(s==='needs-review'){card.classList.add('needs-review');badge.classList.add('needs-review');badge.textContent='⚠ 要復習';if(btn.classList.contains('prog-redo'))btn.classList.add('sel');}updateDashboard();applyFilters();}
+function applySavedStatus(){for(let i=1;i<=TOTAL;i++){const s=statusMap[i];const card=document.getElementById('card-'+i);const badge=document.getElementById('badge-'+i);if(!card)continue;card.classList.remove('mastered','needs-review');badge.className='status-badge';badge.textContent='';if(s==='mastered'){card.classList.add('mastered');badge.classList.add('mastered');badge.textContent='✅ 理解済み';const b=card.querySelector('.prog-ok');if(b)b.classList.add('sel');}else if(s==='needs-review'){card.classList.add('needs-review');badge.classList.add('needs-review');badge.textContent='⚠ 要復習';const b=card.querySelector('.prog-redo');if(b)b.classList.add('sel');}}}
+function resetAll(){if(!confirm('すべての進捗をリセットしますか？'))return;for(let i=1;i<=TOTAL;i++)statusMap[i]='none';saveProgress();for(let i=1;i<=TOTAL;i++){const card=document.getElementById('card-'+i);card.classList.remove('mastered','needs-review');document.getElementById('badge-'+i).className='status-badge';document.getElementById('badge-'+i).textContent='';card.querySelectorAll('.prog-btn').forEach(b=>b.classList.remove('sel'));}updateDashboard();applyFilters();}
+function countByTag(tag){const cards=document.querySelectorAll('.case-card');if(tag==='すべて')return cards.length;let n=0;cards.forEach(c=>{const id=parseInt(c.id.split('-')[1]);const s=statusMap[id]||'none';if(tag==='⚠ 要復習'&&s==='needs-review')n++;else if(tag==='○ 未学習'&&s==='none')n++;else if(c.getAttribute('data-tags')===tag)n++;});return n;}
+function buildTagBar(){const bar=document.getElementById('tagBar');bar.innerHTML='';const allTabs=[
+  {tag:'すべて'},{tag:'DIVIDER'},
+  {tag:'動名詞主語'},{tag:'分詞構文'},{tag:'対比構文'},
+  {tag:'形式主語・that節'},{tag:'SVC・並列'},
+  {tag:'仮定法・比較'},{tag:'what節主語'},
+  {tag:'DIVIDER'},{tag:'⚠ 要復習',special:true},{tag:'○ 未学習',special:true}
+];
+allTabs.forEach(item=>{if(item.tag==='DIVIDER'){const d=document.createElement('div');d.className='tab-divider';bar.appendChild(d);return;}const b=document.createElement('button');b.type='button';b.className='tab-btn'+(item.special?' tab-special':'');b.dataset.tag=item.tag;b.style.setProperty('--tab-color',TAB_COLORS[item.tag]||'#002e5d');b.innerHTML=`${item.tag}<span class="tab-count">${countByTag(item.tag)}</span>`;if(item.tag==='すべて')b.classList.add('active');b.onclick=()=>setTab(item.tag,b);bar.appendChild(b);});}
+function setTab(tag,btn){activeTag=tag==='すべて'?'all':tag;document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');applyFilters();}
+function refreshTabCounts(){document.querySelectorAll('.tab-btn').forEach(b=>{const tag=b.dataset.tag;if(!tag)return;const el=b.querySelector('.tab-count');if(el)el.textContent=countByTag(tag);});}
+function applyFilters(){const q=(document.getElementById('searchInput').value||'').trim().toLowerCase();let visible=0;document.querySelectorAll('.case-card').forEach(card=>{const cardTag=card.getAttribute('data-tags')||'';const id=parseInt(card.id.split('-')[1]);const s=statusMap[id]||'none';const text=card.innerText.toLowerCase();let tagOK=false;if(activeTag==='all')tagOK=true;else if(activeTag==='⚠ 要復習')tagOK=(s==='needs-review');else if(activeTag==='○ 未学習')tagOK=(s==='none');else tagOK=(cardTag===activeTag);const show=tagOK&&(!q||text.includes(q));card.style.display=show?'':'none';if(show)visible++;});document.getElementById('noResults').style.display=(visible===0)?'block':'none';refreshTabCounts();}
+function focusCard(id){const card=document.getElementById('card-'+id);if(document.body.classList.contains('focusing')&&focusedId===id){document.body.classList.remove('focusing');card.classList.remove('focused');focusedId=null;}else{document.body.classList.add('focusing');document.querySelectorAll('.case-card').forEach(c=>c.classList.remove('focused'));card.classList.add('focused');focusedId=id;card.scrollIntoView({behavior:'smooth',block:'start'});}}
+function setAllReveal(show){document.querySelectorAll('.reveal-details').forEach(d=>{if(show)d.setAttribute('open','');else d.removeAttribute('open');});}
+function setMode(mode){document.body.classList.remove('mode-english','mode-blind');['modeNormal','modeEnglish','modeBlind'].forEach(id=>{document.getElementById(id).classList.remove('active');});if(mode==='english'){document.body.classList.add('mode-english');document.getElementById('modeEnglish').classList.add('active');}else if(mode==='blind'){document.body.classList.add('mode-blind');document.getElementById('modeBlind').classList.add('active');}else{document.getElementById('modeNormal').classList.add('active');}}
+function togglePlain(){const btn=document.getElementById('modePlain');const isPlain=document.body.classList.toggle('mode-plain');btn.classList.toggle('plain-active',isPlain);btn.textContent=isPlain?'🎨 ビジュアル復元（指導者モード）':'⬜ 白文表示（指導者モード）';}
+document.addEventListener('DOMContentLoaded',()=>{
+  loadProgress();buildTagBar();initDashboard();applySavedStatus();updateDashboard();applyFilters();setMode('normal');
+  document.getElementById('modeNormal').addEventListener('click',()=>setMode('normal'));
+  document.getElementById('modeEnglish').addEventListener('click',()=>setMode('english'));
+  document.getElementById('modeBlind').addEventListener('click',()=>setMode('blind'));
+  document.getElementById('modePlain').addEventListener('click',togglePlain);
+  document.getElementById('btnShowAll').addEventListener('click',()=>setAllReveal(true));
+  document.getElementById('btnHideAll').addEventListener('click',()=>setAllReveal(false));
+  document.getElementById('searchInput').addEventListener('input',applyFilters);
+  document.getElementById('btnShuffle').addEventListener('click',()=>{const visible=Array.from(document.querySelectorAll('.case-card')).filter(c=>c.style.display!=='none');if(!visible.length)return;const picks=visible.slice().sort(()=>Math.random()-0.5).slice(0,Math.min(3,visible.length));document.querySelectorAll('.case-card').forEach(c=>c.style.display='none');picks.forEach(c=>c.style.display='');document.body.classList.add('focusing');document.querySelectorAll('.case-card').forEach(c=>c.classList.remove('focused'));picks[0].classList.add('focused');picks[0].scrollIntoView({behavior:'smooth',block:'start'});});
+  document.getElementById('btnAll').addEventListener('click',()=>{document.getElementById('searchInput').value='';activeTag='all';document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));const t=document.querySelector('.tab-btn[data-tag="すべて"]');if(t)t.classList.add('active');document.body.classList.remove('focusing','mode-english','mode-blind');document.querySelectorAll('.case-card').forEach(c=>c.classList.remove('focused'));focusedId=null;setMode('normal');applyFilters();window.scrollTo({top:0,behavior:'smooth'});});
+  document.addEventListener('click',e=>{if(!document.body.classList.contains('mode-blind'))return;const eng=e.target.closest('.english-text');if(!eng)return;eng.classList.toggle('unblurred');});
+});
+</script>
+</body>
+</html>
