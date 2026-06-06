@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+<title>大阪大学 2026 入試英語構文スイート</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ob: #0069B4;
+  --ol: #7EC8F0;
+  --od: #004A80;
+  --og: rgba(0,105,180,0.3);
+  --bg: #070B11;
+  --bg2: #0A0F18;
+  --bg3: #0E1520;
+  --sf: #111928;
+  --sf2: #172034;
+  --bd: rgba(0,105,180,0.28);
+  --tx: #EEF4FC;        /* 本文：ほぼ白 */
+  --td: #B8CEDF;        /* サブテキスト：明るいグレー青 */
+  --tm: #5A7A96;        /* ミュート：少し見える程度 */
+  --s:  #FF6B35;   /* S  主語       濃いオレンジ */
+  --v:  #1E88E5;   /* V  動詞       濃い青       */
+  --o:  #FFC107;   /* O  目的語     金色         */
+  --c:  #43A047;   /* C  補語       濃い緑       */
+  --av: #B39DDB;   /* AV 副詞       ラベンダー   */
+  --aj: #FFC0CB;   /* AJ 形容詞     ピンク       */
+  --cj: #FFF44F;   /* CJ 接続詞     レモン色     */
+  --rl: #8E24AA;   /* RL 関係詞     濃い紫       */
+  --ok: #3EBF56;   /* 習得済み      緑           */
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { height:100%; }
+
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--tx);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  overflow: hidden; /* ← 全体スクロール禁止 */
+}
+
+/* ─── 透かし「O」はヘッダー右上に配置 ─── */
+
+/* ════════════════════════════
+   FIXED PANEL（ヘッダー全体）
+   ════════════════════════════ */
+.fixed-panel {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 50;
+  overflow: hidden;           /* 透かし「O」のはみ出しをクリップ */
+  background: linear-gradient(160deg, #04080F 0%, var(--bg2) 55%, #05091A 100%);
+  border-bottom: 2px solid var(--ob);
+  box-shadow: 0 4px 28px rgba(0,0,0,0.7);
+}
+
+/* ヘッダー右上の透かし「O」（田中一光デザイン発想） */
+.fixed-panel::after {
+  content: 'O';
+  position: absolute;
+  right: -0.08em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(100px, 14vw, 180px);
+  font-weight: 400;
+  color: rgba(0, 140, 220, 0.09);
+  pointer-events: none;
+  z-index: 0;
+  line-height: 1;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+
+/* ヘッダー上段 */
+.hd-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 1.4rem 0.45rem;
+  gap: 0.8rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hd-title {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  color: var(--ol);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.hd-title small {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.7rem;
+  color: var(--td);
+  margin-left: 0.7em;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+.hd-stats {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+.stat-pill {
+  background: rgba(0,105,180,0.15);
+  border: 1px solid var(--bd);
+  border-radius: 20px;
+  padding: 0.18rem 0.6rem;
+  font-size: 0.65rem;
+  color: var(--td);
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+}
+.stat-pill b { color: var(--ol); }
+
+/* コントロール行 */
+.hd-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0 1.4rem 0.45rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 160px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--bd);
+  border-radius: 7px;
+  padding: 0.42rem 0.9rem;
+  color: var(--tx);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.search-box:focus { border-color: var(--ob); }
+.search-box::placeholder { color: var(--tm); }
+
+.btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--bd);
+  border-radius: 20px;
+  padding: 0.38rem 0.85rem;
+  color: var(--td);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Noto Sans JP', sans-serif;
+  white-space: nowrap;
+  user-select: none;
+}
+.btn:hover { background: rgba(0,105,180,0.18); color: var(--ol); border-color: var(--ob); }
+.btn.active { background: var(--od); color: var(--ol); border-color: var(--ob); }
+
+/* 進捗 */
+.hd-progress {
+  padding: 0 1.4rem 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.prog-label {
+  font-size: 0.62rem;
+  color: var(--tm);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 0.28rem;
+  display: flex;
+  justify-content: space-between;
+}
+.prog-track {
+  background: rgba(255,255,255,0.06);
+  border-radius: 20px;
+  height: 5px;
+  overflow: hidden;
+}
+.prog-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--od), var(--ob), var(--ol));
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+/* 凡例 */
+.hd-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.9rem;
+  padding: 0.42rem 1.4rem 0.55rem;
+  border-top: 1px solid rgba(0,105,180,0.15);
+  position: relative;
+  z-index: 1;
+}
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  color: #BDD4E8;           /* 白系 */
+}
+.leg-dot {
+  width: 9px; height: 9px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.leg-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+/* ════════════════════════════
+   SCROLLABLE CONTENT AREA
+   ════════════════════════════ */
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
+  /* スクロールバー */
+  scrollbar-width: thin;
+  scrollbar-color: var(--ob) transparent;
+}
+.scroll-area::-webkit-scrollbar { width: 5px; }
+.scroll-area::-webkit-scrollbar-track { background: transparent; }
+.scroll-area::-webkit-scrollbar-thumb { background: var(--ob); border-radius: 3px; }
+
+.cards-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.2rem 1.2rem 3rem;
+}
+
+/* no-results */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  font-size: 0.85rem;
+  color: var(--tm);
+  display: none;
+}
+
+/* ════════════════════════════
+   CARDS
+   ════════════════════════════ */
+.card {
+  background: var(--sf);
+  border: 1px solid var(--bd);
+  border-left: 3px solid var(--ob);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.card:hover { box-shadow: 0 0 18px rgba(0,105,180,0.22); }
+.card.done { border-left-color: var(--ok); }
+.card.hidden { display: none; }
+
+/* card header */
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.65rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  background: linear-gradient(90deg, rgba(0,74,128,0.2) 0%, transparent 70%);
+  -webkit-tap-highlight-color: transparent;
+}
+.card-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  background: var(--od);
+  color: #7EC8F0;
+  border: 1px solid rgba(0,140,220,0.45);
+  border-radius: 4px;
+  padding: 0.15rem 0.55rem;
+  min-width: 4.8rem;
+  text-align: center;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+.star-badge {
+  font-size: 0.65rem;
+  background: rgba(0,105,180,0.18);
+  border: 1px solid rgba(0,105,180,0.38);
+  border-radius: 20px;
+  padding: 0.08rem 0.5rem;
+  color: var(--ol);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.card-label {
+  font-size: 0.92rem;        /* やや大きめ */
+  font-weight: 700;
+  color: #D8EEFF;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+.done-badge {
+  font-size: 0.6rem;
+  background: rgba(62,191,86,0.15);
+  border: 1px solid var(--ok);
+  color: var(--ok);
+  border-radius: 20px;
+  padding: 0.06rem 0.4rem;
+  display: none;
+  flex-shrink: 0;
+}
+.card.done .done-badge { display: inline; }
+.card-arrow {
+  font-size: 0.6rem;
+  color: var(--tm);
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.card.open .card-arrow { transform: rotate(180deg); }
+
+/* card body */
+.card-body {
+  display: none;
+  border-top: 1px solid var(--bd);
+  padding: 0.9rem 1rem 1rem;
+}
+.card.open .card-body { display: block; }
+
+/* blur toggle */
+.blur-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.35rem;
+}
+.blur-btn {
+  background: transparent;
+  border: 1px solid var(--tm);
+  border-radius: 5px;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.65rem;
+  color: var(--tm);
+  cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+  transition: all 0.2s;
+}
+.blur-btn:hover { border-color: var(--ob); color: var(--ol); }
+
+/* sentence */
+.sentence-box {
+  background: var(--bg);
+  border-radius: 5px;
+  border-left: 3px solid var(--ob);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.85rem;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  line-height: 2.0;
+  letter-spacing: 0.01em;
+  transition: filter 0.25s;
+}
+.sentence-box.blurred { filter: blur(5px); cursor: pointer; }
+
+/* 五文型＋修飾語カラー（日本大学版統一仕様） */
+.S  { color: var(--s);  font-weight: 700; border-bottom: 2px solid var(--s);  padding-bottom: 1px; }
+.V  { color: var(--v);  font-weight: 700; border-bottom: 2px solid var(--v);  padding-bottom: 1px; }
+.O  { color: var(--o);  font-weight: 700; border-bottom: 2px solid var(--o);  padding-bottom: 1px; }
+.C  { color: var(--c);  font-weight: 700; border-bottom: 2px solid var(--c);  padding-bottom: 1px; }
+.AV { color: var(--av); }                          /* 副詞・副詞句  ラベンダー */
+.AJ { color: var(--aj); }                          /* 形容詞・形容詞句  ピンク */
+.CJ { color: var(--cj); font-weight: 600; }        /* 接続詞  レモン色         */
+.RL { color: var(--rl); font-weight: 700; border-bottom: 2px dotted var(--rl); padding-bottom: 1px; } /* 関係詞  濃い紫 */
+.CL { background: rgba(0,105,180,0.07); border-radius: 3px; padding: 0 2px; } /* 節のくくり（背景のみ） */
+
+/* ── 節の「機能」をアンダーラインで示す（節内のSVOCカラーと併用）──
+   目的語節  (O-clause)  → 金色   #FFC107  ← wonderingのO、verbs of thinkingのthat節 など
+   形容詞節  (AJ-clause) → ピンク #FFC0CB  ← 関係詞節（名詞修飾）
+   副詞節    (AV-clause) → ラベンダー #B39DDB ← if/when/because/Given that など
+   主語節    (S-clause)  → オレンジ #FF6B35 ← it...that の真主語節など          */
+.O-clause  { border-bottom: 2.5px solid var(--o);  padding-bottom: 3px; }
+.AJ-clause { border-bottom: 2.5px solid var(--aj); padding-bottom: 3px; }
+.AV-clause { border-bottom: 2.5px solid var(--av); padding-bottom: 3px; }
+.S-clause  { border-bottom: 2.5px solid var(--s);  padding-bottom: 3px; }
+/* 節アンダーライン内のSVOCスパンは個別border-bottomを無効化——節色のみ表示 */
+.O-clause  .S, .O-clause  .V, .O-clause  .O, .O-clause  .C, .O-clause  .RL,
+.AJ-clause .S, .AJ-clause .V, .AJ-clause .O, .AJ-clause .C, .AJ-clause .RL,
+.AV-clause .S, .AV-clause .V, .AV-clause .O, .AV-clause .C, .AV-clause .RL,
+.S-clause  .S, .S-clause  .V, .S-clause  .O, .S-clause  .C, .S-clause  .RL {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* tabs */
+.tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid var(--bd);
+  padding-bottom: 0.4rem;
+}
+.tab {
+  font-size: 0.7rem;
+  padding: 0.28rem 0.65rem;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer;
+  color: var(--tm);
+  transition: all 0.18s;
+  background: transparent;
+  border: none;
+  font-family: 'Noto Sans JP', sans-serif;
+  user-select: none;
+}
+.tab:hover { color: var(--td); background: var(--sf2); }
+.tab.active { color: var(--ol); background: var(--od); }
+
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* 解説ボックス */
+.box-koko {
+  background: linear-gradient(135deg, rgba(0,74,128,0.22), rgba(0,105,180,0.1));
+  border: 1px solid rgba(0,105,180,0.38);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.65rem;
+  position: relative;
+  padding-top: 1.3rem;
+}
+.box-koko::before {
+  content: 'ここが重要';
+  position: absolute;
+  top: -0.55rem;
+  left: 0.75rem;
+  background: var(--ob);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.08rem 0.5rem;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+}
+.box-logic {
+  background: rgba(69,200,224,0.06);
+  border: 1px solid rgba(69,200,224,0.25);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  position: relative;
+  padding-top: 1.3rem;
+}
+.box-logic::before {
+  content: 'ロジカル・アイ';
+  position: absolute;
+  top: -0.55rem;
+  left: 0.75rem;
+  background: #1A6070;
+  color: #D0EEF8;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.08rem 0.5rem;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+}
+.box-koko p, .box-logic p {
+  font-size: 0.83rem;
+  line-height: 1.9;
+  color: #E8F2FC;          /* 白系に */
+}
+.box-koko em, .box-logic em { font-style: italic; color: #9ED4F0; }
+.box-koko strong { color: #7EC8F0; font-weight: 700; }
+.box-logic strong { color: var(--av); font-weight: 700; }
+
+/* struct tab */
+.struct-box {
+  padding: 0.5rem 0;
+}
+.struct-tags {
+  margin-bottom: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+.stag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  background: rgba(0,105,180,0.14);
+  border: 1px solid rgba(0,105,180,0.32);
+  border-radius: 3px;
+  padding: 0.08rem 0.4rem;
+  color: var(--ol);
+}
+.struct-box ul {
+  padding-left: 1.1rem;
+  list-style: disc;
+}
+.struct-box li {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: #C8DDED;           /* 白系 */
+  margin-bottom: 0.15rem;
+}
+.struct-box li strong { color: #7EC8F0; font-weight: 600; }
+.struct-box li em { color: var(--av); font-style: italic; }
+
+/* done button */
+.done-wrap {
+  margin-top: 0.9rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--bd);
+  display: flex;
+  gap: 0.5rem;
+}
+.done-btn {
+  background: transparent;
+  border: 1px solid var(--tm);
+  border-radius: 5px;
+  padding: 0.28rem 0.8rem;
+  color: var(--tm);
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.done-btn:hover { border-color: var(--ok); color: var(--ok); }
+.card.done .done-btn { background: rgba(62,191,86,0.1); border-color: var(--ok); color: var(--ok); }
+
+/* ════════════════════════════
+   大阪大学合格への道標 コラム
+   ════════════════════════════ */
+.column-section {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, rgba(0,50,100,0.5) 0%, rgba(0,30,70,0.6) 100%);
+  border: 1px solid rgba(0,140,220,0.35);
+  border-top: 3px solid var(--ob);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.column-header {
+  background: linear-gradient(90deg, rgba(0,105,180,0.4) 0%, rgba(0,60,120,0.2) 100%);
+  padding: 1rem 1.4rem 0.85rem;
+  border-bottom: 1px solid rgba(0,140,220,0.25);
+  position: relative;
+}
+.column-header::before {
+  content: '道';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'EB Garamond', serif;
+  font-size: 5rem;
+  color: rgba(0,140,220,0.08);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.column-kigo {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--ol);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  opacity: 0.8;
+}
+.column-title {
+  font-family: 'EB Garamond', serif;
+  font-size: clamp(1.1rem, 3.5vw, 1.45rem);
+  color: #EEF6FF;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+.column-title em {
+  font-style: normal;
+  color: var(--ol);
+}
+.column-body {
+  padding: 1.2rem 1.4rem 1.4rem;
+}
+.col-block {
+  margin-bottom: 1.3rem;
+  padding-bottom: 1.3rem;
+  border-bottom: 1px solid rgba(0,140,220,0.15);
+}
+.col-block:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.col-block-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+.col-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(0,105,180,0.3);
+  border: 1px solid rgba(0,140,220,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.col-block-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #D8EEFF;
+  letter-spacing: 0.03em;
+}
+.col-block p {
+  font-size: 0.83rem;
+  line-height: 2.0;
+  color: #C8DCEE;
+}
+.col-block p strong {
+  color: #7EC8F0;
+  font-weight: 700;
+}
+.col-block p em {
+  font-style: italic;
+  color: #A8D8F0;
+}
+/* 励ましメッセージボックス */
+.encourage-box {
+  background: linear-gradient(135deg, rgba(0,80,150,0.3), rgba(0,40,90,0.4));
+  border: 1px solid rgba(126,200,240,0.3);
+  border-left: 3px solid var(--ol);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin-top: 0.5rem;
+}
+.encourage-box p {
+  font-size: 0.88rem;
+  line-height: 2.1;
+  color: #DFF0FF;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+}
+.encourage-box p strong {
+  color: #A8DCFF;
+  font-weight: 700;
+}
+.encourage-quote {
+  margin-top: 0.75rem;
+  padding: 0.7rem 1rem;
+  background: rgba(0,105,180,0.15);
+  border-radius: 5px;
+  border-left: 2px solid rgba(126,200,240,0.5);
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: #B8D8F4;
+  line-height: 1.85;
+}
+
+/* footer */
+footer {
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 0.62rem;
+  color: #5A7A96;
+  padding: 0.5rem;
+  border-top: 1px solid rgba(0,105,180,0.18);
+  background: var(--bg2);
+  position: relative;
+  z-index: 10;
+  letter-spacing: 0.06em;
+}
+
+/* クレジット */
+.credit-block {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.4rem;
+  background: linear-gradient(90deg, rgba(0,105,180,0.12) 0%, rgba(0,40,90,0.18) 100%);
+  border: 1px solid rgba(0,140,220,0.2);
+  border-left: 3px solid var(--ob);
+  border-radius: 6px;
+}
+.credit-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--od), var(--ob));
+  border: 1px solid rgba(126,200,240,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'EB Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0,105,180,0.35);
+}
+.credit-main {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #A8CCE8;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+}
+.credit-sub {
+  font-size: 0.62rem;
+  color: var(--tm);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* animation */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card { animation: slideIn 0.25s ease both; }
+body.mw .sentence-box .S,body.mw .sentence-box .V,body.mw .sentence-box .O,body.mw .sentence-box .C,body.mw .sentence-box .AV,body.mw .sentence-box .AJ,body.mw .sentence-box .CJ,body.mw .sentence-box .RL,body.mw .sentence-box .O-clause,body.mw .sentence-box .AJ-clause,body.mw .sentence-box .AV-clause,body.mw .sentence-box .S-clause{color:#C8D8E8 !important;font-weight:400 !important;border-bottom:none !important;padding-bottom:0 !important;}
+
+.trans-box{font-family:'Noto Serif JP',serif;font-size:clamp(0.8rem,2.3vw,0.88rem);
+  color:#E8E3D8;line-height:1.9;padding:0.6rem 0.95rem;
+  border-left:3px solid rgba(0,105,180,0.35);
+  background:rgba(255,255,255,0.025);border-radius:0 4px 4px 0;margin:0.5rem 0 0.3rem;}
+.trans-label{font-family:'JetBrains Mono',monospace;font-size:0.58rem;
+  color:rgba(0,150,255,0.7);letter-spacing:0.12em;text-transform:uppercase;
+  margin-bottom:0.3rem;}
+/* 白文モードで和訳も非表示 */
+body.mw .trans-box, body.mw .trans-label{display:none !important;}
+
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     FIXED PANEL
+     ══════════════════════════════ -->
+<div class="fixed-panel">
+
+  <!-- 上段：タイトル＋統計 -->
+  <div class="hd-top">
+    <div class="hd-title">
+      大阪大学 2026 入試英語構文スイート
+      <small>Animal Art &amp; Intention</small>
+    </div>
+    <div class="hd-stats">
+      <div class="stat-pill">習得 <b id="doneCount">0</b> / 10</div>
+      <div class="stat-pill">表示 <b id="visCount">10</b></div>
+    </div>
+  </div>
+
+  <!-- コントロール -->
+  <div class="hd-controls">
+    <input class="search-box" type="text" id="searchInput" placeholder="🔍  構文・キーワードで検索…">
+    <button class="btn" id="shuffleBtn">🔀 シャッフル</button>
+    <button class="btn" id="blurAllBtn">👁 一括ぼかし</button>
+    <button class="btn" id="mwOnBtn" onclick="setWhiteMode(true)">⬜ 白文表示</button>
+    <button class="btn" id="mwOffBtn" onclick="setWhiteMode(false)">🎨 カラー表示</button>
+    <button class="btn" id="expandAllBtn">＋ 全展開</button>
+    <button class="btn" id="resetBtn">↺ リセット</button>
+  </div>
+
+  <!-- 進捗 -->
+  <div class="hd-progress">
+    <div class="prog-label">
+      <span id="progLabel">進捗 0%</span>
+      <span id="progDetail">0 / 10 習得済み</span>
+    </div>
+    <div class="prog-track">
+      <div class="prog-bar" id="progBar" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- 凡例 -->
+  <div class="hd-legend">
+    <div class="leg-item"><div class="leg-dot" style="background:#FF6B35"></div><span class="leg-tag" style="background:rgba(255,107,53,.18);color:#FF6B35;border:1px solid rgba(255,107,53,.45)">S</span>主語</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#1E88E5"></div><span class="leg-tag" style="background:rgba(30,136,229,.18);color:#1E88E5;border:1px solid rgba(30,136,229,.45)">V</span>動詞</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#FFC107"></div><span class="leg-tag" style="background:rgba(255,193,7,.18);color:#FFC107;border:1px solid rgba(255,193,7,.45)">O</span>目的語</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#43A047"></div><span class="leg-tag" style="background:rgba(67,160,71,.18);color:#43A047;border:1px solid rgba(67,160,71,.45)">C</span>補語</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#B39DDB"></div><span class="leg-tag" style="background:rgba(179,157,219,.15);color:#B39DDB;border:1px solid rgba(179,157,219,.4)">副詞</span>副詞句</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#FFC0CB"></div><span class="leg-tag" style="background:rgba(255,192,203,.12);color:#FFC0CB;border:1px solid rgba(255,192,203,.38)">形容詞</span>形容詞句</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#FFF44F"></div><span class="leg-tag" style="background:rgba(255,244,79,.1);color:#FFF44F;border:1px solid rgba(255,244,79,.35)">接続詞</span>接続詞</div>
+    <div class="leg-item"><div class="leg-dot" style="background:#8E24AA"></div><span class="leg-tag" style="background:rgba(142,36,170,.18);color:#CE93D8;border:1px solid rgba(142,36,170,.45)">関係詞</span>関係詞</div>
+    <div class="leg-item" style="width:100%;margin-top:0.3rem;padding-top:0.35rem;border-top:1px solid rgba(0,105,180,0.2);font-size:0.6rem;color:#5A7A96;letter-spacing:0.08em">── 節の機能（アンダーライン色） ──</div>
+    <div class="leg-item"><span style="border-bottom:2.5px solid #FFC107;padding-bottom:1px;font-size:0.72rem;color:#FFC107;font-family:monospace">O節</span>&thinsp;目的語節</div>
+    <div class="leg-item"><span style="border-bottom:2.5px solid #FFC0CB;padding-bottom:1px;font-size:0.72rem;color:#FFC0CB;font-family:monospace">AJ節</span>&thinsp;形容詞節（関係詞節）</div>
+    <div class="leg-item"><span style="border-bottom:2.5px solid #B39DDB;padding-bottom:1px;font-size:0.72rem;color:#B39DDB;font-family:monospace">AV節</span>&thinsp;副詞節</div>
+    <div class="leg-item"><span style="border-bottom:2.5px solid #FF6B35;padding-bottom:1px;font-size:0.72rem;color:#FF6B35;font-family:monospace">S節</span>&thinsp;主語節</div>
+    <div class="leg-item" style="margin-left:auto;font-size:0.65rem;color:#7A9AB8">クリックで展開</div>
+  </div>
+
+</div><!-- /fixed-panel -->
+
+
+<!-- ══════════════════════════════
+     SCROLLABLE AREA
+     ══════════════════════════════ -->
+<div class="scroll-area" id="scrollArea">
+  <div class="cards-wrap" id="cardsWrap">
+
+    <div class="no-results" id="noResults">該当する構文が見つかりません。</div>
+
+    <!-- Case 1 -->
+    <div class="card" data-id="1" data-kw="leave O doing wonder whether art 否定統治 第5文型">
+      <div class="card-head" onclick="toggleCard(1)">
+        <span class="card-num">Case 1</span>
+        <span class="star-badge">★★★★★</span>
+        <span class="card-label">leave O doing / whether節（O節） / 否定統治</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="S">their beauty and intricacy</span>
+          <span class="V"> have left </span>
+          <span class="O">some researchers</span>
+          <span class="AV"> wondering </span><!--
+          whether節全体（whetherからartまで）= wonderingのO → 金色アンダーライン -->
+          <span class="O-clause"><span class="CJ">whether</span> <span class="S">they</span> <span class="V">shouldn't be considered</span> <span class="C">art</span></span>.
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">それらの美しさと精巧さは、一部の研究者たちを、それらは芸術とみなされるべきではないかと考えさせるほどであった。</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t1')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k1')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l1')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s1')">構造</button>
+        </div>
+        <div class="tab-pane" id="t1">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">それらの美しさと精巧さは、一部の研究者たちを、それらは芸術とみなされるべきではないかと考えさせるほどであった。</div>
+        </div>
+        <div class="tab-pane active" id="k1">
+          <div class="box-koko"><p><strong>leave O doing</strong>（OをVingの状態にしておく）という第5文型の核心。SVOCのCに現在分詞 <em>wondering</em> が来て「研究者たちを〜と考えさせるほどだ」という影響の強さを表す。<em>wondering</em> は自動詞的に機能し、その<strong>目的語節がwhether節全体</strong>（金色アンダーライン）。whether節内も完全なSVC構造：<span style="color:var(--s)">they</span>（S）＋ <span style="color:var(--v)">shouldn't be considered</span>（V）＋ <span style="color:var(--c)">art</span>（C）。<em>shouldn't be considered</em> という<strong>否定語を含む受動態</strong>が「芸術とみなされるべきではないか」という肯定的示唆を包む修辞的技法。</p></div>
+        </div>
+        <div class="tab-pane" id="l1">
+          <div class="box-logic"><p>筆者は「動物の作るものが芸術かどうか」という問いをここで初めて提示している。<em>shouldn't be considered</em> という否定疑問形は<strong>暗示的肯定</strong>——「むしろ芸術とみなすべきではないか？」という誘導。これは後続議論の<strong>問題提起句</strong>として機能し、読者を定義論争へ引き込む rhetoric だ。論述文において「否定で肯定を示す」パターンは議論の開始合図として頻出。</p></div>
+        </div>
+        <div class="tab-pane" id="s1">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">SVO+C(現在分詞)</span><span class="stag">leave O doing = 第5文型</span><span class="stag">whether節 = wonderingのO（目的語節）</span><span class="stag">否定統治</span><span class="stag">受動態</span></div>
+            <ul>
+              <li><strong>S</strong>：their beauty and intricacy（複数主語）</li>
+              <li><strong>V</strong>：have left（現在完了）</li>
+              <li><strong>O</strong>：some researchers</li>
+              <li><strong>C</strong>：wondering whether〜（現在分詞句）</li>
+              <li style="margin-top:0.4rem;border-top:1px solid rgba(0,105,180,0.2);padding-top:0.4rem"><strong>whether節内のSVC</strong>（金色アンダーライン＝wonderingのO）：</li>
+              <li><strong style="color:var(--s)">S</strong>：they</li>
+              <li><strong style="color:var(--v)">V</strong>：shouldn't be considered（否定＋受動）</li>
+              <li><strong style="color:var(--c)">C</strong>：art</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(1)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- Case 2 -->
+    <div class="card" data-id="2" data-kw="so that art define Gallie essentially contested concept 仮定法 might">
+      <div class="card-head" onclick="toggleCard(2)">
+        <span class="card-num">Case 2</span>
+        <span class="star-badge">★★★★★</span>
+        <span class="card-label">so〜that / 仮定法的 might / 名詞節入れ子</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="AV">In fact, </span>
+          <span class="S">art</span>
+          <span class="V"> has proven </span>
+          <span class="AJ">so difficult to define</span>
+          <span class="CJ"> that </span>
+          <span class="S">Scottish philosopher W. B. Gallie</span>
+          <span class="AV"> once </span>
+          <span class="V">suggested</span>
+          <span class="O-clause"> <span class="S">it</span> <span class="V">might be</span> <span class="C">an "essentially contested concept."</span></span>
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">実際、芸術は定義することがきわめて難しいと判明したため、スコットランドの哲学者W・B・ガリーはかつて、それは「本質的に争われる概念」である可能性があると示唆した。</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t2')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k2')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l2')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s2')">構造</button>
+        </div>
+        <div class="tab-pane" id="t2">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">実際、芸術は定義することがきわめて難しいと判明したため、スコットランドの哲学者W・B・ガリーはかつて、それは「本質的に争われる概念」である可能性があると示唆した。</div>
+        </div>
+        <div class="tab-pane active" id="k2">
+          <div class="box-koko"><p><strong>so〜that構文</strong>と<strong>名詞節の入れ子</strong>が合わさった阪大頻出形。<em>so difficult to define that…</em> は「定義しがたい」という性質の強調で、that節内の <em>suggested (that) it might be</em> は<strong>仮定法的助動詞 might</strong> によって断言を避けた謙虚な主張を形成。<em>essentially contested concept</em>（本質的に争われる概念）という哲学用語はそのまま覚えること。</p></div>
+        </div>
+        <div class="tab-pane" id="l2">
+          <div class="box-logic"><p>Gallie引用の目的は「芸術の定義が困難である」ことを<strong>権威ある哲学者の言葉で補強</strong>すること。<em>essentially contested concept</em> とは「複数の合理的立場が対立し続ける概念」であり、この概念導入によって筆者は「定義しようとすること自体が無益ではなく、<strong>争いが本質的である</strong>」という論争の正当化を行っている。</p></div>
+        </div>
+        <div class="tab-pane" id="s2">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">so〜that</span><span class="stag">SVC構文</span><span class="stag">suggest + that節</span><span class="stag">might = 仮定法的</span></div>
+            <ul>
+              <li><strong>主節</strong>：art has proven so difficult to define</li>
+              <li><strong>that節</strong>：Gallie once suggested (that) it might be〜</li>
+              <li><strong>名詞節</strong>：it might be an "essentially contested concept"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(2)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- Case 3 -->
+    <div class="card" data-id="3" data-kw="Tolstoy suggest conduit emotion writing 1897 分詞構文 同時動作">
+      <div class="card-head" onclick="toggleCard(3)">
+        <span class="card-num">Case 3</span>
+        <span class="star-badge">★★★★☆</span>
+        <span class="card-label">suggest + that節 / 分詞構文（同時動作）</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="S">Leo Tolstoy</span>
+          <span class="AV"> famously </span>
+          <span class="V">suggested</span>
+          <span class="O-clause"> <span class="S">art</span> <span class="V">is</span> <span class="C">a conduit for emotion</span></span>,
+          <span class="AV-clause"> writing in 1897 that "one man consciously… hands on to others feelings…"</span>
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">レオ・トルストイはかつて、芸術は感情の導管であると示唆し、1897年に「ある人間が意識的に……他の人々に感情を手渡す」と著した。</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t3')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k3')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l3')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s3')">構造</button>
+        </div>
+        <div class="tab-pane" id="t3">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">レオ・トルストイはかつて、芸術は感情の導管であると示唆し、1897年に「ある人間が意識的に……他の人々に感情を手渡す」と著した。</div>
+        </div>
+        <div class="tab-pane active" id="k3">
+          <div class="box-koko"><p><strong>分詞構文</strong>（<em>writing in 1897 that…</em>）は主文の動詞 <em>suggested</em> と<strong>同時または根拠</strong>を表す。「述べた——具体的には1897年に書いた」という情報の重ね方。<em>suggest (that) S V</em> の接続詞省略も要注意。引用内の <em>hands on to</em>（手渡す・伝える）は他動詞句として機能。</p></div>
+        </div>
+        <div class="tab-pane" id="l3">
+          <div class="box-logic"><p>トルストイの「感情の導管」説は<strong>表現論的芸術観</strong>の代表例。後の「意図」議論への布石として、引用内の <em>consciously</em>（意識的に）という語が埋め込まれている点に注目——芸術には<strong>意識的意図</strong>が必要という前提が暗示されている。</p></div>
+        </div>
+        <div class="tab-pane" id="s3">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">suggest + that節（接続詞省略）</span><span class="stag">分詞構文（同時）</span><span class="stag">引用内複文</span></div>
+            <ul>
+              <li><strong>主節</strong>：Leo Tolstoy famously suggested (that)…</li>
+              <li><strong>名詞節</strong>：art is a conduit for emotion</li>
+              <li><strong>分詞構文</strong>：writing in 1897 that…（同時動作・根拠）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(3)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- Case 4 -->
+    <div class="card" data-id="4" data-kw="同格that work of art mimic depict stand in representational">
+      <div class="card-head" onclick="toggleCard(4)">
+        <span class="card-num">Case 4</span>
+        <span class="star-badge">★★★★★</span>
+        <span class="card-label">同格that / 多動詞並列 / 抽象名詞＋that</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="S">the idea</span>
+          <span class="CJ"> that </span>
+          <span class="AJ-clause">
+            <span class="S">a work of art</span>
+            <span class="V"> must </span>
+            <span class="AV">in some way</span>
+            <span class="V">mimic, depict</span>
+            <span class="CJ"> or </span>
+            <span class="V">"stand in"</span>
+            <span class="AV"> as a sort of sign for something else</span>
+          </span>
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">芸術作品は何らかの形で他の何かのための記号として模倣し、描写し、あるいは「代わりを務め」なければならないという考え</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t4')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k4')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l4')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s4')">構造</button>
+        </div>
+        <div class="tab-pane" id="t4">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">芸術作品は何らかの形で他の何かのための記号として模倣し、描写し、あるいは「代わりを務め」なければならないという考え</div>
+        </div>
+        <div class="tab-pane active" id="k4">
+          <div class="box-koko"><p>阪大が最重視する<strong>同格のthat</strong>。<em>the idea that〜</em> は「〜という考え」と訳し、thatは関係代名詞ではなく<strong>接続詞</strong>（名詞節を導く同格）。抽象名詞（<em>idea, fact, belief, claim</em> など）の直後に来るthatは同格と判断する。また <em>mimic, depict, "stand in"</em> の<strong>三語並列動詞</strong>と <em>stand in as</em>（〜の代わりを務める）も重要。</p></div>
+        </div>
+        <div class="tab-pane" id="l4">
+          <div class="box-logic"><p>これは芸術の<strong>表象論（Representationalism）</strong>を一文で定義している。芸術は「何か別のものを表す記号」でなければならないという考え方。<em>in some way</em>（何らかの形で）という留保表現にも注意——定義を緩める工夫だ。後で問われる「動物の作るものは何かを表しているか？」という問いに直結する。</p></div>
+        </div>
+        <div class="tab-pane" id="s4">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">同格that</span><span class="stag">抽象名詞 + that節</span><span class="stag">三動詞並列</span><span class="stag">stand in as</span></div>
+            <ul>
+              <li><strong>同格that</strong>：the idea <em>that</em> a work of art must…</li>
+              <li><strong>並列動詞</strong>：mimic / depict / "stand in"</li>
+              <li><strong>as句</strong>：as a sort of sign for something else</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(4)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- Case 5 -->
+    <div class="card" data-id="5" data-kw="形式主語 how much intention does matter 強調do it is not clear">
+      <div class="card-head" onclick="toggleCard(5)">
+        <span class="card-num">Case 5</span>
+        <span class="star-badge">★★★★★</span>
+        <span class="card-label">形式主語 It / 疑問詞節 / 強調のdo</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="S">it</span>
+          <span class="V">'s</span>
+          <span class="C">not clear</span>
+          <span class="S-clause"> how much <span class="S">intention</span> <span class="V">really does matter</span> <span class="AV">for art</span></span>.
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">どの程度意図が重要であるかは、完全には明らかではない。</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t5')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k5')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l5')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s5')">構造</button>
+        </div>
+        <div class="tab-pane" id="t5">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">どの程度意図が重要であるかは、完全には明らかではない。</div>
+        </div>
+        <div class="tab-pane active" id="k5">
+          <div class="box-koko"><p>三点が重なる。①<strong>形式主語 it</strong>（真主語は how much〜節）。②<strong>疑問詞節</strong>（how much…）が主語節として機能。③ <em>really does matter</em> の<strong>強調のdo</strong>——否定文・疑問文でもないのにdoが現れる場合は「確かに〜する」という強調。<em>does matter</em> ＝「まさに重要である」。精読では must not（禁止）とdon't have to（不要）の区別と同様、このdoの用法を見落とさないこと。</p></div>
+        </div>
+        <div class="tab-pane" id="l5">
+          <div class="box-logic"><p>「意図がどれほど重要か明確ではない」という<strong>論点の宙吊り</strong>。これは議論を開くための構造的な一文だ。筆者はここで<strong>意図必要論を疑問視</strong>し、次の段落で「意図が少なくても芸術はあり得る」という方向へ論を進める。<em>not clear</em> という否定は断定を避けながら読者に問いを渡す rhetoric。</p></div>
+        </div>
+        <div class="tab-pane" id="s5">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">形式主語 It</span><span class="stag">SVC構文</span><span class="stag">how much〜 = 名詞節（真主語）</span><span class="stag">強調のdo</span></div>
+            <ul>
+              <li><strong>形式主語</strong>：It（真主語＝ how much intention really does matter for art）</li>
+              <li><strong>強調do</strong>：does matter ＝ まさに重要である</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(5)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- Case 6 -->
+    <div class="card" data-id="6" data-kw="reveal how meaningful signs operate without 間接疑問">
+      <div class="card-head" onclick="toggleCard(6)">
+        <span class="card-num">Case 6</span>
+        <span class="star-badge">★★★★☆</span>
+        <span class="card-label">how節（間接疑問）/ without + 名詞</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="CJ">But </span>
+          <span class="S">they</span>
+          <span class="V"> reveal </span>
+          <span class="O-clause">how <span class="AJ">meaningful</span> <span class="S">signs or representations</span> <span class="V">can operate</span></span>
+          <span class="AV"> without the need for complex intentions</span>.
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">しかしながら、最も多く言及される基準の一つは、芸術家が芸術的なものを創造しようとする意図を持っているという点である。</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t6')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k6')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l6')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s6')">構造</button>
+        </div>
+        <div class="tab-pane" id="t6">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">しかしながら、最も多く言及される基準の一つは、芸術家が芸術的なものを創造しようとする意図を持っているという点である。</div>
+        </div>
+        <div class="tab-pane active" id="k6">
+          <div class="box-koko"><p><em>reveal how〜</em> の<strong>how節</strong>は間接疑問文として機能し、<em>reveal</em>の目的語（O）になる名詞節。<em>how + S + V</em> の語順（疑問文の倒置なし）が精読での判断ポイント。また <em>without the need for</em>（〜を必要とせずに）は<strong>without + 名詞句</strong>による否定的付加情報として頻出。</p></div>
+        </div>
+        <div class="tab-pane" id="l6">
+          <div class="box-logic"><p>Butで始まる<strong>逆接</strong>はここが論の転換点であることを示す。「（動物は意図を持たないかもしれない）<strong>しかし</strong>、有意味な記号が複雑な意図なしに機能し得ることを示している」——これは<strong>意図不要論</strong>の証拠として動物の信号行動（ホタルの発光など）を援用する重要論点。</p></div>
+        </div>
+        <div class="tab-pane" id="s6">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">SVO構文</span><span class="stag">how節 = 目的語名詞節</span><span class="stag">without + 名詞（否定副詞句）</span></div>
+            <ul>
+              <li><strong>S</strong>：they（前文の例：ホタルなど）</li>
+              <li><strong>V</strong>：reveal</li>
+              <li><strong>O</strong>：how meaningful signs or representations can operate</li>
+              <li><strong>M</strong>：without the need for complex intentions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(6)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- Case 7 -->
+    <div class="card" data-id="7" data-kw="Given that argue reason think might able come about 三重入れ子 intention-demanding">
+      <div class="card-head" onclick="toggleCard(7)">
+        <span class="card-num">Case 7</span>
+        <span class="star-badge">★★★★★</span>
+        <span class="card-label">Given that / there is reason to / 三重入れ子（中心主張）</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="AV-clause">Given that <span class="S">much art</span> <span class="AV">also</span> <span class="V">serves</span> <span class="C">a communicative role</span></span>,
+          <span class="S"> I </span>
+          <span class="V">argue</span>
+          <span class="O-clause"> that <span class="S">there</span><span class="V">'s</span> <span class="C">reason to think</span>
+            <span class="O-clause"> that <span class="S">art</span> <span class="V">might be able to come about</span>
+              <span class="AV"> in less intention-demanding ways too</span>
+            </span>
+          </span>.
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">したがって、チンパンジーがしたことを芸術と呼ぶことに慎重な人々は、チンパンジーが絵を描く意図を持っているかどうか、そしてそれが何らかの方法で美的な意図であるかどうかという点に懐疑的である。</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t7')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k7')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l7')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s7')">構造</button>
+        </div>
+        <div class="tab-pane" id="t7">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">したがって、チンパンジーがしたことを芸術と呼ぶことに慎重な人々は、チンパンジーが絵を描く意図を持っているかどうか、そしてそれが何らかの方法で美的な意図であるかどうかという点に懐疑的である。</div>
+        </div>
+        <div class="tab-pane active" id="k7">
+          <div class="box-koko"><p>最重要構文。<strong>Given that〜</strong>は「〜であることを前提とすると」という<strong>分詞構文的前置き</strong>（前提・譲歩）。次に <em>I argue that there's reason to think that〜</em> という<strong>三重入れ子</strong>：①argue that〜、②there is reason to think that〜、③art might be able to come about〜。<em>come about</em>（生じる）と複合語 <em>intention-demanding</em>（意図を要求する）も必須語彙。</p></div>
+        </div>
+        <div class="tab-pane" id="l7">
+          <div class="box-logic"><p>筆者の<strong>中心主張</strong>がここに凝縮される。「人間の芸術もコミュニケーション機能を果たす（前提）→ だから意図が少なくても芸術は成立し得る（主張）」という<strong>類比論証</strong>。<em>I argue</em> は学術文で最も直接的な論者の声。<em>might be able to</em> という二重の婉曲（may + can）で断定を和らげている。</p></div>
+        </div>
+        <div class="tab-pane" id="s7">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">Given that〜（前置分詞構文）</span><span class="stag">I argue that〜</span><span class="stag">there is reason to V</span><span class="stag">三重that入れ子</span><span class="stag">might be able to</span></div>
+            <ul>
+              <li><strong>Given that節</strong>：much art also serves a communicative role（前提）</li>
+              <li><strong>主節</strong>：I argue that〜</li>
+              <li><strong>that①</strong>：there's reason to think that〜</li>
+              <li><strong>that②</strong>：art might be able to come about in less intention-demanding ways</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(7)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- Case 8 -->
+    <div class="card" data-id="8" data-kw="function as indicator reproductive fitness apply both humans animals">
+      <div class="card-head" onclick="toggleCard(8)">
+        <span class="card-num">Case 8</span>
+        <span class="star-badge">★★★☆☆</span>
+        <span class="card-label">function as / 抽象名詞主語 / apply to</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="S">The beauty of a work</span>
+          <span class="V"> functions </span>
+          <span class="C">as an indicator of the artist's reproductive fitness</span>
+          — <span class="CJ">and </span>
+          <span class="S">this</span>
+          <span class="V"> can apply </span>
+          <span class="AV">to both humans and animals</span>.
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">ある作品の美しさは、芸術家の繁殖適応度の指標として機能する——そしてこれは人間にも動物にも当てはまりうる。</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t8')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k8')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l8')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s8')">構造</button>
+        </div>
+        <div class="tab-pane" id="t8">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">ある作品の美しさは、芸術家の繁殖適応度の指標として機能する——そしてこれは人間にも動物にも当てはまりうる。</div>
+        </div>
+        <div class="tab-pane active" id="k8">
+          <div class="box-koko"><p><strong>function as〜</strong>（〜として機能する）は第2文型の変種。<em>beauty</em> という<strong>抽象名詞が主語</strong>に来るパターンは和訳時に注意——「美しさが〜として機能する」と主語をそのまま訳す。<em>reproductive fitness</em>（繁殖適応度）は進化生物学の術語。ダッシュ以降の <em>this</em> が前文全体を受ける<strong>代名詞の照応</strong>。</p></div>
+        </div>
+        <div class="tab-pane" id="l8">
+          <div class="box-logic"><p>進化論的芸術観（性選択説）の導入。「美は繁殖適応度のシグナル」というダーウィン的発想を芸術に適用し、<em>both humans and animals</em> と明言することで<strong>人間と動物の芸術的行動の連続性</strong>を示唆。「動物も芸術を作れる」論の生物学的根拠となる段落。</p></div>
+        </div>
+        <div class="tab-pane" id="s8">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">SVC（function as）</span><span class="stag">抽象名詞主語</span><span class="stag">this = 前文照応</span><span class="stag">apply to</span></div>
+            <ul>
+              <li><strong>S</strong>：The beauty of a work</li>
+              <li><strong>V</strong>：functions</li>
+              <li><strong>C</strong>：as an indicator of the artist's reproductive fitness</li>
+              <li><strong>後半</strong>：and this（＝前文全体） can apply to both humans and animals</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(8)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- Case 9 -->
+    <div class="card" data-id="9" data-kw="safe to say count as 二重that省略 形式主語 animal creations art">
+      <div class="card-head" onclick="toggleCard(9)">
+        <span class="card-num">Case 9</span>
+        <span class="star-badge">★★★★☆</span>
+        <span class="card-label">it is safe to say / count as / 二重that省略</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="S">I</span>
+          <span class="V"> think </span>
+          <span class="O-clause"><span class="S">it</span>'s <span class="AJ">safe</span> to say
+            <span class="O-clause"> <span class="S">some animal creations</span>
+              <span class="V">don't count</span>
+              <span class="AV">as art</span>
+            </span>
+          </span>.
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">私は、動物の創造物のいくつかは芸術としてみなされないと言っても差し支えないと思う。</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t9')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k9')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l9')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s9')">構造</button>
+        </div>
+        <div class="tab-pane" id="t9">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">私は、動物の創造物のいくつかは芸術としてみなされないと言っても差し支えないと思う。</div>
+        </div>
+        <div class="tab-pane active" id="k9">
+          <div class="box-koko"><p>阪大定番の構造が二重に重なる。<em>I think (that)</em> ＋ <em>it is safe to say (that)</em> という<strong>二重のthat省略</strong>。<em>it is safe to say that〜</em>（〜と言っても差し支えない）は頻出表現として丸ごと習得。<em>count as〜</em>（〜とみなされる）も重要イディオム。<em>art</em> の前に冠詞がない不可算用法も精読ポイント。</p></div>
+        </div>
+        <div class="tab-pane" id="l9">
+          <div class="box-logic"><p>筆者は「動物の作るもの全てが芸術ではない」と<strong>留保</strong>を設けている。これは論の<strong>過度な一般化を自ら防ぐ</strong>修辞的謙虚さ。<em>some animal creations</em> という数量詞の限定が重要で、「すべてではないが、いくつかは芸術と言える」という<strong>部分的主張</strong>への橋渡しになっている。</p></div>
+        </div>
+        <div class="tab-pane" id="s9">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">形式主語 it</span><span class="stag">it is safe to say that〜</span><span class="stag">二重that省略</span><span class="stag">count as</span></div>
+            <ul>
+              <li><strong>I think (that)</strong>：that省略①</li>
+              <li><strong>it is safe to say (that)</strong>：形式主語＋that省略②</li>
+              <li><strong>真の主張</strong>：some animal creations don't count as art</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(9)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- Case 10 -->
+    <div class="card" data-id="10" data-kw="仮定法 would consider if discover motivation evolution 受動 最難関 倒置疑問文">
+      <div class="card-head" onclick="toggleCard(10)">
+        <span class="card-num">Case 10</span>
+        <span class="star-badge">★★★★★</span>
+        <span class="card-label">仮定法過去 / 倒置疑問文 / 多層入れ子（最難関）</span>
+        <span class="done-badge">✓ 習得済</span>
+        <span class="card-arrow">▼</span>
+      </div>
+      <div class="card-body">
+        <div class="blur-row"><button class="blur-btn" onclick="toggleBlur(this)">👁 英文をぼかす</button></div>
+        <div class="sentence-box" onclick="unblur(this)">
+          <span class="CJ">And </span>
+          <span class="V">would</span>
+          <span class="S"> we </span>
+          <span class="AV">still </span><span class="V">consider</span>
+          <span class="O"> human sculptures</span>
+          <span class="C"> art</span>
+          <span class="AV-clause"> if <span class="S">we</span> <span class="V">discovered</span>
+            <span class="O-clause"> <span class="S">much about the motivation to build them</span>
+              <span class="V">could be explained</span>
+              <span class="AV">by evolution</span>
+            </span>
+          </span>?
+        </div>
+
+        <div class="trans-label">📖 日本語訳</div>
+        <div class="trans-box">そして、もし私たちが人間の彫刻を作る動機の多くが進化によって説明できると発見したとしても、私たちはやはり人間の彫刻を芸術とみなすだろうか？</div>
+        <div class="tabs">
+          <button class="tab" onclick="switchTab(this,'t10')">📖 和訳</button>
+          <button class="tab active" onclick="switchTab(this,'k10')">ここが重要</button>
+          <button class="tab" onclick="switchTab(this,'l10')">ロジカル・アイ</button>
+          <button class="tab" onclick="switchTab(this,'s10')">構造</button>
+        </div>
+        <div class="tab-pane" id="t10">
+          <div class="trans-box" style="margin:0.4rem 0 0.2rem;">そして、もし私たちが人間の彫刻を作る動機の多くが進化によって説明できると発見したとしても、私たちはやはり人間の彫刻を芸術とみなすだろうか？</div>
+        </div>
+        <div class="tab-pane active" id="k10">
+          <div class="box-koko"><p>最難関の多層構造。①<strong>疑問文の倒置</strong>（would we〜）。②<strong>仮定法過去</strong>（if we discovered〜 could be explained）——現実には起きていない仮定。③ <em>if we discovered (that)</em> 内のthat省略。④ <em>much about the motivation to build them</em> という<strong>長い名詞句主語</strong>が <em>could be explained</em> の主語。⑤<strong>受動態</strong>（could be explained by evolution）。一文に5つの文法ポイントが凝縮。</p></div>
+        </div>
+        <div class="tab-pane" id="l10">
+          <div class="box-logic"><p>これは<strong>思考実験（thought experiment）</strong>の問いかけ。「人間の芸術の動機が進化で説明できると判明しても、芸術とみなすか？」——筆者は次文で <em>I think we would</em>（そうするだろう）と答え、<strong>進化的動機は芸術性を否定しない</strong>という主張を展開する。動物の芸術的行動も同様に扱うべきという<strong>類比的結論</strong>への布石となる最重要設問文。</p></div>
+        </div>
+        <div class="tab-pane" id="s10">
+          <div class="struct-box">
+            <div class="struct-tags"><span class="stag">倒置疑問文</span><span class="stag">仮定法過去</span><span class="stag">SVOC構文</span><span class="stag">受動態</span><span class="stag">多層入れ子</span></div>
+            <ul>
+              <li><strong>主節</strong>：Would we still consider human sculptures art（SVOC）</li>
+              <li><strong>if節</strong>：if we discovered (that)〜（仮定法過去）</li>
+              <li><strong>that節S</strong>：much about the motivation to build them</li>
+              <li><strong>that節V</strong>：could be explained by evolution（受動）</li>
+            </ul>
+          </div>
+        </div>
+        <div class="done-wrap"><button class="done-btn" onclick="toggleDone(10)">✓ 習得済みにする</button></div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         大阪大学合格への道標 コラム
+         ══════════════════════════════ -->
+    <div class="column-section">
+      <div class="column-header">
+        <div class="column-kigo">Column — Roadmap to Osaka University</div>
+        <div class="column-title">大阪大学合格への<em>道標</em></div>
+      </div>
+      <div class="column-body">
+
+        <!-- ① 精読の方法論 -->
+        <div class="col-block">
+          <div class="col-block-head">
+            <div class="col-icon">📖</div>
+            <div class="col-block-title">① 精読は「骨格→修飾→入れ子」の順に</div>
+          </div>
+          <p>阪大英語の長文は、一見複雑に見えますが、<strong>必ず「主節の骨格（SVO）」</strong>が芯にあります。まず動詞を見つけ、主語と目的語を特定する。その後で、修飾句・同格節・入れ子のthat節を「付加情報」として積み上げていく——この順序を習慣づけるだけで、長文の見え方が劇的に変わります。本スイートの構文①〜⑩を使って、<strong>毎日1文、声に出して構造分析</strong>してみてください。</p>
+        </div>
+
+        <!-- ② 英作文の戦略 -->
+        <div class="col-block">
+          <div class="col-block-head">
+            <div class="col-icon">✍️</div>
+            <div class="col-block-title">② 英作文は「定義→例→留保」の三段構成で</div>
+          </div>
+          <p>阪大の英作文で求められているのは、<strong>賛否の二項対立ではなく「概念の精密化」</strong>です。たとえば「動物は芸術を作れるか」という問いに対し、①まず <em>art</em> を定義し、②具体例（クジラの歌、フグの模様）を挙げ、③<em>it is safe to say that…</em> や <em>might be able to</em> で留保をつける——この構造が高評価を得ます。<strong>1日1題、120語の小作文</strong>を書き続けることが最短ルートです。</p>
+        </div>
+
+        <!-- ③ 語彙の蓄積 -->
+        <div class="col-block">
+          <div class="col-block-head">
+            <div class="col-icon">🔬</div>
+            <div class="col-block-title">③ 哲学・科学系の抽象語に強くなる</div>
+          </div>
+          <p>阪大は<strong>哲学・認知科学・進化生物学</strong>を題材にした出題を好みます。<em>contested concept / reproductive fitness / communicative role / intention-demanding</em> といった語彙は、単語帳には載っていないことが多い。しかし、<strong>語根と文脈から意味を推測する力</strong>こそが本番で差をつけます。構文を覚えながら、周辺の語彙も一緒に記録するノートを作りましょう。</p>
+        </div>
+
+        <!-- ④ 励まし -->
+        <div class="col-block">
+          <div class="col-block-head">
+            <div class="col-icon">🌟</div>
+            <div class="col-block-title">④ 受験生へ — 努力は、静かに積み重なる</div>
+          </div>
+          <div class="encourage-box">
+            <p>阪大を目指すということは、<strong>思考することを恐れない</strong>ということです。答えのはっきりしない問いに向き合い、言葉を尽くして考え、自分の言葉で表現する——それが阪大英語の本質であり、大学での学びの入口でもあります。</p>
+            <p style="margin-top:0.7rem">今日、英文を一文読んだあなたは、昨日より少しだけ遠くまで見えるようになっています。<strong>その積み重ねを、信じてください。</strong>試験会場で、あなたが今日勉強した構文と出会う瞬間が、きっと来ます。</p>
+            <div class="encourage-quote">"It's not clear how much intention really does matter for art." — しかし、合格への意志は、確かに結果を変える。</div>
+          </div>
+        </div>
+
+        <!-- ⑤ 学習スケジュール -->
+        <div class="col-block">
+          <div class="col-block-head">
+            <div class="col-icon">📅</div>
+            <div class="col-block-title">⑤ 推奨学習スケジュール（週次）</div>
+          </div>
+          <p><strong>月・水・金</strong>：本スイートの構文を2〜3文精読（ここが重要→ロジカル・アイ→構造の順にタブを読む）。<strong>火・木</strong>：習得済み構文を使った英作文練習（120語）。<strong>土</strong>：過去問の長文1題を時間内に精読。<strong>日</strong>：週の復習と弱点構文の洗い出し。<em>「習得済みにする」ボタンで進捗を管理しながら、</em><strong>全10構文の完全習得</strong>を目標にしてください。</p>
+        </div>
+
+      </div><!-- /column-body -->
+    </div><!-- /column-section -->
+
+    <!-- クレジット -->
+    <div class="credit-block">
+      <div class="credit-logo">S</div>
+      <div class="credit-text">
+        <div class="credit-main">©2026 Sapphire ONLINE Studies English Project</div>
+        <div class="credit-sub">All contents are for educational purposes. Unauthorized reproduction prohibited.</div>
+      </div>
+    </div>
+
+  </div><!-- /cards-wrap -->
+</div><!-- /scroll-area -->
+
+<footer>©2026 Sapphire ONLINE Studies English Project</footer>
+
+<script>
+// ── State ──
+let done = new Set(JSON.parse(localStorage.getItem('osaka2026v2_done') || '[]'));
+let globalBlur = false;
+
+function save() {
+  localStorage.setItem('osaka2026v2_done', JSON.stringify([...done]));
+}
+
+// ── Stats & Progress ──
+function updateUI() {
+  const allCards = document.querySelectorAll('.card:not(.hidden)');
+  const total = 10;
+  const vis = allCards.length;
+  document.getElementById('doneCount').textContent = done.size;
+  document.getElementById('visCount').textContent = vis;
+  const pct = Math.round((done.size / total) * 100);
+  document.getElementById('progBar').style.width = pct + '%';
+  document.getElementById('progLabel').textContent = `進捗 ${pct}%`;
+  document.getElementById('progDetail').textContent = `${done.size} / ${total} 習得済み`;
+}
+
+// ── Toggle card open/close ──
+function toggleCard(id) {
+  document.querySelector(`.card[data-id="${id}"]`).classList.toggle('open');
+}
+
+// ── Done ──
+function toggleDone(id) {
+  const card = document.querySelector(`.card[data-id="${id}"]`);
+  const btn = card.querySelector('.done-btn');
+  if (done.has(id)) {
+    done.delete(id);
+    card.classList.remove('done');
+    btn.textContent = '✓ 習得済みにする';
+  } else {
+    done.add(id);
+    card.classList.add('done');
+    btn.textContent = '✓ 習得済み ✓';
+  }
+  save();
+  updateUI();
+}
+
+// ── Blur individual ──
+function toggleBlur(btn) {
+  const box = btn.closest('.card-body').querySelector('.sentence-box');
+  box.classList.toggle('blurred');
+  btn.textContent = box.classList.contains('blurred') ? '👁 英文を表示' : '👁 英文をぼかす';
+}
+function unblur(box) {
+  if (box.classList.contains('blurred')) {
+    box.classList.remove('blurred');
+    const btn = box.closest('.card-body').querySelector('.blur-btn');
+    if (btn) btn.textContent = '👁 英文をぼかす';
+  }
+}
+
+// ── Tabs ──
+function switchTab(btn, targetId) {
+  const body = btn.closest('.card-body');
+  body.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  body.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(targetId).classList.add('active');
+}
+
+// ── Search ──
+document.getElementById('searchInput').addEventListener('input', function () {
+  const q = this.value.toLowerCase().trim();
+  let vis = 0;
+  document.querySelectorAll('.card').forEach(card => {
+    const kw = (card.dataset.kw || '').toLowerCase();
+    const label = card.querySelector('.card-label').textContent.toLowerCase();
+    const match = !q || kw.includes(q) || label.includes(q);
+    card.classList.toggle('hidden', !match);
+    if (match) vis++;
+  });
+  document.getElementById('noResults').style.display = vis === 0 ? 'block' : 'none';
+  updateUI();
+});
+
+// ── Shuffle ──
+document.getElementById('shuffleBtn').addEventListener('click', function () {
+  const wrap = document.getElementById('cardsWrap');
+  const cards = [...wrap.querySelectorAll('.card')];
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    wrap.insertBefore(cards[j], cards[i]);
+  }
+});
+
+// ── Blur all ──
+document.getElementById('blurAllBtn').addEventListener('click', function () {
+  globalBlur = !globalBlur;
+  document.querySelectorAll('.sentence-box').forEach(box => {
+    if (globalBlur) box.classList.add('blurred');
+    else box.classList.remove('blurred');
+  });
+  document.querySelectorAll('.blur-btn').forEach(btn => {
+    const box = btn.closest('.card-body').querySelector('.sentence-box');
+    btn.textContent = box.classList.contains('blurred') ? '👁 英文を表示' : '👁 英文をぼかす';
+  });
+  this.classList.toggle('active', globalBlur);
+  this.textContent = globalBlur ? '👁 ぼかし解除' : '👁 一括ぼかし';
+});
+
+// ── Expand all / Collapse all ──
+document.getElementById('expandAllBtn').addEventListener('click', function () {
+  allExpanded = !allExpanded;
+  document.querySelectorAll('.card:not(.hidden)').forEach(c => {
+    c.classList.toggle('open', allExpanded);
+  });
+  this.textContent = allExpanded ? '－ 全収納' : '＋ 全展開';
+});
+
+// ── Reset ──
+document.getElementById('resetBtn').addEventListener('click', function () {
+  if (!confirm('すべての習得記録をリセットしますか？')) return;
+  done.clear();
+  document.querySelectorAll('.card').forEach(c => {
+    c.classList.remove('done');
+    const btn = c.querySelector('.done-btn');
+    if (btn) btn.textContent = '✓ 習得済みにする';
+  });
+  save();
+  updateUI();
+});
+
+// ── Init ──
+done.forEach(id => {
+  const card = document.querySelector(`.card[data-id="${id}"]`);
+  if (!card) return;
+  card.classList.add('done');
+  const btn = card.querySelector('.done-btn');
+  if (btn) btn.textContent = '✓ 習得済み ✓';
+});
+// 初期状態：全カードを展開表示
+document.querySelectorAll('.card').forEach(c => c.classList.add('open'));
+let allExpanded = true;
+const expandBtn = document.getElementById('expandAllBtn');
+if(expandBtn) expandBtn.textContent = '－ 全収納';
+updateUI();
+
+function setWhiteMode(on){
+  if(on){ document.body.classList.add('mw'); }
+  else  { document.body.classList.remove('mw'); }
+  const onBtn  = document.getElementById('mwOnBtn');
+  const offBtn = document.getElementById('mwOffBtn');
+  if(onBtn){  onBtn.style.background  = on  ? 'rgba(255,255,255,0.28)' : 'rgba(255,255,255,0.08)';
+              onBtn.style.fontWeight   = on  ? '700' : '400'; }
+  if(offBtn){ offBtn.style.background = !on ? 'rgba(255,255,255,0.28)' : 'rgba(255,255,255,0.08)';
+              offBtn.style.fontWeight  = !on ? '700' : '400'; }
+}
+
+</script>
+</body>
+</html>
