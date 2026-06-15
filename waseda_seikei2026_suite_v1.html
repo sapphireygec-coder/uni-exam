@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+<title>早稲田大学 政治経済学部 2026 重要構文 自習スイート</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Serif+JP:wght@400;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --univ-primary:#8C1A1A; --univ-dark:#6A1010; --univ-light:#B02020;
+  --gold:#C9A84C; --gold-light:#E8CC7A;
+  --bg:#0D0D0D; --bg-card:#151515; --bg-inner:#1C1C1C;
+  --border:#282828; --border2:#333333;
+  --text:#EAE5DA; --text-sub:#A09890; --text-dim:#666055;
+  --s:#FF6B35; --v:#1E88E5; --o:#FFC107; --c:#43A047;
+  --adv:#B39DDB; --adj:#F48FB1; --conj:#D4C200; --rel:#AB47BC;
+  --ok:#2E7D32; --ok2:#43A047; --redo:#E65100;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Source Serif 4','Noto Serif JP',Georgia,serif;font-size:16px;line-height:1.85;-webkit-text-size-adjust:100%;overflow-x:hidden;}
+
+.header{position:sticky;top:0;z-index:100;background:linear-gradient(160deg,var(--univ-dark) 0%,var(--univ-primary) 45%,var(--univ-dark) 100%);border-bottom:3px solid var(--univ-light);box-shadow:0 4px 24px rgba(0,0,0,0.6);padding:.45rem .9rem .4rem;}
+.header::after{content:'W';position:absolute;top:-0.5rem;right:1rem;font-family:'Playfair Display',serif;font-size:4.5rem;font-weight:900;color:rgba(255,255,255,0.04);line-height:1;pointer-events:none;user-select:none;}
+.header-inner{max-width:780px;margin:0 auto;}
+.header-univ{font-family:'Playfair Display',serif;font-size:clamp(.9rem,3vw,1.3rem);font-weight:900;letter-spacing:0.04em;color:#FFF;text-shadow:0 2px 12px rgba(0,0,0,0.5);}
+.header-dept{font-family:'Noto Serif JP',serif;font-size:clamp(.68rem,2vw,.82rem);font-weight:700;color:rgba(255,255,255,0.85);letter-spacing:0.08em;margin-bottom:.4rem;}
+.search-row{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:.38rem;}
+.search-input{flex:1;min-width:180px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:.3rem .7rem;color:#FFF;font-family:'Noto Serif JP',serif;font-size:0.75rem;outline:none;transition:border 0.2s;}
+.search-input::placeholder{color:rgba(255,255,255,0.5);}
+.search-input:focus{border-color:rgba(255,255,255,0.45);}
+.ctrl-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:.28rem .65rem;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:0.72rem;color:#FFF;white-space:nowrap;transition:all 0.2s;user-select:none;}
+.ctrl-btn:hover{background:rgba(255,255,255,0.16);}
+.ctrl-btn.active{background:rgba(255,255,255,0.24);border-color:rgba(255,255,255,0.5);font-weight:700;}
+
+.tab-section{margin-bottom:.38rem;}
+.tab-section-label{font-family:'JetBrains Mono',monospace;font-size:0.52rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:.22rem;}
+.tab-row{display:flex;gap:0.35rem;flex-wrap:wrap;}
+.tab-btn{display:flex;align-items:center;gap:0.3rem;background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.14);border-radius:6px;padding:.22rem .6rem;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:0.72rem;color:rgba(255,255,255,0.75);transition:all 0.18s;user-select:none;}
+.tab-btn:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.3);color:#FFF;}
+.tab-btn.active{background:var(--tab-color,var(--univ-primary));border-color:var(--tab-color,var(--univ-light));color:#FFF;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,0.4);}
+.tab-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;background:rgba(0,0,0,0.25);border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:rgba(255,255,255,0.85);line-height:1;}
+.tab-btn.active .tab-count{background:rgba(0,0,0,0.3);color:#FFF;}
+.tab-divider{width:1px;height:22px;background:rgba(255,255,255,0.15);align-self:center;flex-shrink:0;margin:0 0.1rem;}
+.tab-btn.tab-special{border-style:dashed;}
+.tab-btn.tab-special.active{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.4);border-style:solid;}
+
+.mode-row{display:flex;gap:0.3rem;flex-wrap:wrap;margin-bottom:.32rem;}
+.hint-text{font-family:'Noto Serif JP',serif;font-size:0.62rem;color:rgba(255,255,255,0.55);line-height:1.5;}
+
+.dashboard{max-width:780px;margin:1rem auto 0;padding:0 1rem;}
+.dash-box{background:var(--bg-card);border:1px solid var(--border2);border-top:2px solid var(--gold);border-radius:4px;padding:0.85rem 1.1rem;}
+.dash-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem;flex-wrap:wrap;gap:0.4rem;}
+.dash-label{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;}
+.dash-count{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--text-sub);}
+.dash-count span{color:var(--gold-light);font-weight:700;}
+.progress-bar-wrap{background:rgba(255,255,255,0.06);border-radius:4px;height:7px;overflow:hidden;margin-bottom:0.65rem;}
+.progress-bar{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--ok),var(--ok2));transition:width 0.5s ease;}
+.dash-chips{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.dash-chip{display:flex;align-items:center;gap:0.28rem;font-family:'Noto Serif JP',serif;font-size:0.72rem;color:var(--text-sub);}
+.chip-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);flex-shrink:0;transition:background 0.3s;}
+.chip-dot.mastered{background:var(--ok2);border-color:var(--ok2);}
+.chip-dot.needs-review{background:var(--redo);border-color:var(--redo);}
+.dash-reset{display:block;width:100%;margin-top:0.65rem;background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:3px;padding:0.35rem;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:0.72rem;color:var(--text-dim);transition:all 0.2s;}
+.dash-reset:hover{border-color:rgba(255,255,255,0.22);color:var(--text-sub);}
+
+body.mode-english .reveal-jp,
+body.mode-english .reveal-exp{display:none !important;}
+body.mode-blind .english-text{filter:blur(7px);cursor:pointer;transition:filter 0.2s;}
+body.mode-blind .english-text.unblurred{filter:none;}
+body.mode-blind .english-text::after{content:"（タップで解除）";font-weight:700;color:var(--text-dim);margin-left:0.5em;}
+body.mode-blind .english-text.unblurred::after{display:none;}
+body.focusing .case-card{opacity:0.3;filter:saturate(0.5);transition:opacity 0.3s;}
+body.focusing .case-card.focused{opacity:1;filter:none;outline:2px solid rgba(140,26,26,0.5);}
+
+.no-results{text-align:center;padding:2.5rem;font-family:'Noto Serif JP',serif;font-size:0.9rem;color:var(--text-dim);display:none;}
+.content{max-width:780px;margin:0 auto;padding:1.2rem 1rem 3rem;}
+
+.legend-wrap{max-width:780px;margin:0.8rem auto 0;padding:0 1rem;}
+.legend-box{background:var(--bg-card);border:1px solid var(--border2);border-top:2px solid var(--gold);border-radius:4px;padding:0.85rem 1.1rem;}
+.legend-label{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.65rem;}
+.legend-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0.4rem;}
+@media(max-width:400px){.legend-grid{grid-template-columns:repeat(2,1fr);}}
+.legend-item{display:flex;align-items:center;gap:0.3rem;font-size:0.75rem;color:var(--text-sub);}
+.lchip{display:inline-block;padding:0.06rem 0.38rem;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:600;flex-shrink:0;}
+.lchip-s{background:rgba(255,107,53,0.2);color:var(--s);border:1px solid rgba(255,107,53,0.5);}
+.lchip-v{background:rgba(30,136,229,0.2);color:var(--v);border:1px solid rgba(30,136,229,0.5);}
+.lchip-o{background:rgba(255,193,7,0.2);color:var(--o);border:1px solid rgba(255,193,7,0.5);}
+.lchip-c{background:rgba(67,160,71,0.2);color:var(--c);border:1px solid rgba(67,160,71,0.5);}
+.lchip-adv{background:rgba(179,157,219,0.2);color:var(--adv);border:1px solid rgba(179,157,219,0.5);}
+.lchip-adj{background:rgba(244,143,177,0.2);color:var(--adj);border:1px solid rgba(244,143,177,0.5);}
+.lchip-conj{background:rgba(212,194,0,0.15);color:var(--conj);border:1px solid rgba(212,194,0,0.4);}
+.lchip-rel{background:rgba(171,71,188,0.2);color:var(--rel);border:1px solid rgba(171,71,188,0.5);}
+
+.case-card{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--univ-primary);border-radius:4px;margin-bottom:1.6rem;overflow:hidden;transition:opacity 0.3s,filter 0.3s;}
+.case-card.mastered{border-left-color:var(--ok2);}
+.case-card.needs-review{border-left-color:var(--redo);}
+.card-head{background:linear-gradient(90deg,rgba(140,26,26,0.15) 0%,transparent 100%);border-bottom:1px solid var(--border);padding:0.75rem 1.1rem 0.65rem;display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;}
+.card-head-left{flex:1;min-width:0;}
+.case-num{font-family:'JetBrains Mono',monospace;font-size:clamp(0.88rem,2.8vw,1.05rem);font-weight:700;color:#FFF;background:var(--univ-primary);display:inline-block;padding:0.18rem 0.8rem 0.18rem 0.65rem;border-radius:3px;letter-spacing:0.12em;margin-bottom:0.4rem;}
+.case-num::before{content:'📌 ';letter-spacing:0;}
+.case-title{font-family:'Noto Serif JP',serif;font-size:clamp(0.92rem,2.8vw,1.1rem);font-weight:700;color:var(--text);line-height:1.45;margin-bottom:0.3rem;}
+.case-meta-row{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.case-ref{font-family:'Noto Serif JP',serif;font-size:0.7rem;color:var(--text-sub);background:rgba(140,26,26,0.15);border:1px solid rgba(140,26,26,0.3);padding:0.12rem 0.65rem;border-radius:20px;}
+.status-badge{font-family:'JetBrains Mono',monospace;font-size:0.65rem;border-radius:20px;padding:0.12rem 0.6rem;display:none;}
+.status-badge.mastered{display:inline;background:rgba(46,125,50,0.2);border:1px solid var(--ok2);color:var(--ok2);}
+.status-badge.needs-review{display:inline;background:rgba(230,81,0,0.15);border:1px solid var(--redo);color:var(--redo);}
+.card-actions{display:flex;gap:0.4rem;flex-wrap:wrap;flex-shrink:0;}
+.act-btn{background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:20px;padding:0.28rem 0.7rem;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:0.75rem;color:var(--text-sub);transition:all 0.2s;white-space:nowrap;}
+.act-btn:hover{background:rgba(255,255,255,0.12);color:var(--text);}
+.case-source{font-family:'Source Serif 4',serif;font-size:0.68rem;font-style:italic;color:var(--text-dim);padding:0.4rem 1.1rem;border-bottom:1px solid var(--border);}
+.card-body{padding:1rem 1.1rem 1.1rem;}
+
+.english-text{background:var(--bg-inner);border:1px solid var(--border2);border-left:4px solid #333;border-radius:3px;padding:0.9rem 1rem;margin-bottom:0.8rem;font-family:'Source Serif 4',serif;font-size:clamp(0.95rem,3vw,1.15rem);font-weight:700;line-height:2.15;word-break:break-word;color:var(--text);}
+.english-text hr{border:none;border-top:1px dashed var(--border2);margin:0.8rem 0;}
+.s{color:var(--s);font-weight:800;}.v{color:var(--v);font-weight:800;}.o{color:var(--o);font-weight:800;}.c{color:var(--c);font-weight:800;}
+.adv{color:var(--adv);font-weight:400;}.adj{color:var(--adj);font-weight:400;}.conj{color:var(--conj);font-weight:700;}
+/* ── 白文モード：全スパンの色を継承色に統一 ── */
+body.plain .english-text .s,body.plain .english-text .v,
+body.plain .english-text .o,body.plain .english-text .c,
+body.plain .english-text .m,body.plain .english-text .conj,
+body.plain .english-text .rel,body.plain .english-text .aj,
+body.plain .english-text .av,body.plain .english-text .cj,
+body.plain .english-text .rl,
+body.plain .english-text .adv,body.plain .english-text .adj{
+  color:inherit !important;font-weight:600 !important;
+}
+body.plain .english-text{border-left-color:rgba(255,255,255,.15) !important;}.rel{color:var(--rel);font-weight:800;}
+
+.reveal-details{border-top:1px solid var(--border2);margin-top:0.5rem;}
+.reveal-summary{list-style:none;cursor:pointer;padding:0.55rem 0.9rem;display:flex;align-items:center;justify-content:space-between;font-family:'Noto Serif JP',serif;font-size:0.78rem;color:var(--text-sub);transition:background 0.2s;user-select:none;-webkit-tap-highlight-color:transparent;}
+.reveal-summary::-webkit-details-marker{display:none;}
+.reveal-summary::after{content:'▼';font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--gold);transition:transform 0.3s;display:inline-block;}
+.reveal-details[open] .reveal-summary::after{transform:rotate(180deg);}
+.reveal-summary:hover{background:rgba(255,255,255,0.03);}
+.reveal-inner{padding:0.1rem 0 0.6rem;}
+
+.translation{font-family:'Noto Serif JP',serif;font-size:clamp(0.8rem,2.3vw,0.88rem);color:#E8E3D8;line-height:1.9;padding:0.6rem 0.9rem;border-left:2px solid var(--border2);background:rgba(255,255,255,0.015);border-radius:0 3px 3px 0;margin:0.3rem 0;}
+.imp-box{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.18);border-radius:3px;padding:0.75rem 0.95rem;margin-bottom:0.75rem;}
+.imp-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--gold);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.35rem;}
+.imp-box p{font-family:'Noto Serif JP',serif;font-size:clamp(0.8rem,2.3vw,0.86rem);line-height:1.95;color:var(--text);}
+.imp-box em{font-style:italic;color:#D4C891;}.imp-box strong{color:#FFF;font-weight:700;}
+.logic-box{background:rgba(30,136,229,0.05);border:1px solid rgba(30,136,229,0.18);border-radius:3px;padding:0.75rem 0.95rem;}
+.logic-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:#64B5F6;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem;}
+.logic-formula{font-family:'JetBrains Mono',monospace;font-size:clamp(0.72rem,2vw,0.78rem);color:#90CAF9;line-height:1.75;margin-bottom:0.45rem;white-space:pre-wrap;word-break:break-word;}
+.logic-box p{font-family:'Noto Serif JP',serif;font-size:clamp(0.78rem,2.2vw,0.84rem);color:var(--text-sub);line-height:1.9;}
+.logic-box p::before{content:'▶ ';color:var(--v);}
+.selfcheck{margin-top:0.75rem;padding:0.75rem 0.95rem;border:1px solid var(--border2);border-radius:3px;background:rgba(255,255,255,0.02);}
+.selfcheck-title{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--text-sub);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.45rem;}
+.selfcheck ul{padding-left:1.2rem;}
+.selfcheck li{font-family:'Noto Serif JP',serif;font-size:clamp(0.78rem,2.2vw,0.84rem);color:var(--text-sub);line-height:1.8;margin:0.25rem 0;}
+
+.prog-btns{display:flex;gap:0.55rem;margin-top:0.9rem;padding-top:0.85rem;border-top:1px solid var(--border2);flex-wrap:wrap;}
+.prog-btn{flex:1;min-width:110px;padding:0.5rem;border-radius:3px;cursor:pointer;font-family:'Noto Serif JP',serif;font-size:0.8rem;font-weight:700;border:1.5px solid;transition:all 0.2s;text-align:center;}
+.prog-ok{background:rgba(46,125,50,0.1);border-color:var(--ok);color:var(--ok2);}
+.prog-ok:hover{background:rgba(46,125,50,0.25);}
+.prog-ok.sel{background:var(--ok);color:#FFF;}
+.prog-redo{background:rgba(230,81,0,0.08);border-color:var(--redo);color:var(--redo);}
+.prog-redo:hover{background:rgba(230,81,0,0.2);}
+.prog-redo.sel{background:var(--redo);color:#FFF;}
+
+.footer{background:linear-gradient(135deg,var(--univ-dark),var(--univ-primary));border-top:2px solid var(--univ-light);padding:1.8rem 1.2rem;margin-top:1rem;}
+.footer-inner{max-width:780px;margin:0 auto;}
+.footer-title{font-family:'Noto Serif JP',serif;font-size:0.92rem;font-weight:700;color:#FFF;margin-bottom:0.6rem;}
+.footer-body{font-family:'Noto Serif JP',serif;font-size:0.8rem;color:rgba(255,255,255,0.82);line-height:1.85;margin-bottom:0.6rem;}
+details.footer-more summary{font-family:'Noto Serif JP',serif;font-size:0.78rem;color:rgba(255,255,255,0.7);cursor:pointer;margin-bottom:0.5rem;}
+details.footer-more ol{font-family:'Noto Serif JP',serif;font-size:0.78rem;color:rgba(255,255,255,0.75);line-height:1.9;padding-left:1.3rem;margin-bottom:0.7rem;}
+.footer-progress{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.65);margin-bottom:0.4rem;}
+.footer-credit{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.45);}
+@media print{.header,.dashboard,.legend-wrap,.card-actions,.prog-btns{display:none !important;}body{background:#FFF;color:#000;}.case-card{box-shadow:none;break-inside:avoid;border:1px solid #CCC;}}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-univ">WASEDA UNIVERSITY</div>
+    <div class="header-dept">政治経済学部 2026 ／ 重要構文自習スイート 10選</div>
+    <div class="search-row">
+      <input id="searchInput" class="search-input" placeholder="キーワード検索（例：necessarily / the 比較級 / shown to）">
+      <button type="button" class="ctrl-btn" id="btnAll">ALL</button>
+      <button type="button" class="ctrl-btn" id="btnShuffle">🔀 シャッフル3枚</button>
+    </div>
+    <div class="tab-section">
+      <div class="tab-section-label">📂 カテゴリーで絞り込む</div>
+      <div class="tab-row" id="tagBar"></div>
+    </div>
+    <div class="mode-row">
+      <button type="button" class="ctrl-btn active" id="modeNormal">通常</button>
+      <button type="button" class="ctrl-btn" id="modeEnglish">英文のみ</button>
+      <button type="button" class="ctrl-btn" id="modeBlind">暗記テスト（ぼかし）</button>
+      <button type="button" class="ctrl-btn" id="btnShowAll">和訳・解説を全表示</button>
+      <button type="button" class="ctrl-btn" id="btnHideAll">全て隠す</button>
+      <button type="button" class="ctrl-btn" id="btnPlain">🔲 白文モード</button>
+    </div>
+    <div class="hint-text">①「英文のみ」で骨格を読む → ②和訳を開いて確認 → ③解説でタグを確認 → ④理解度を記録</div>
+  </div>
+</header>
+
+<div class="dashboard">
+  <div class="dash-box">
+    <div class="dash-top">
+      <div class="dash-label">📊 学習進捗</div>
+      <div class="dash-count">理解済み <span id="masteredCount">0</span> / <span id="totalCount">10</span></div>
+    </div>
+    <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+    <div class="dash-chips" id="dashChips"></div>
+    <button type="button" class="dash-reset" onclick="resetAll()">↺ すべての進捗をリセット</button>
+  </div>
+</div>
+
+<div class="legend-wrap">
+  <div class="legend-box">
+    <div class="legend-label">🎨 カラーコード凡例</div>
+    <div class="legend-grid">
+      <div class="legend-item"><span class="lchip lchip-s">S</span>主語</div>
+      <div class="legend-item"><span class="lchip lchip-v">V</span>動詞</div>
+      <div class="legend-item"><span class="lchip lchip-o">O</span>目的語</div>
+      <div class="legend-item"><span class="lchip lchip-c">C</span>補語</div>
+      <div class="legend-item"><span class="lchip lchip-adv">副詞</span>副詞句</div>
+      <div class="legend-item"><span class="lchip lchip-adj">形容詞</span>形容詞句</div>
+      <div class="legend-item"><span class="lchip lchip-conj">接続詞</span>接続詞</div>
+      <div class="legend-item"><span class="lchip lchip-rel">関係詞</span>関係詞</div>
+    </div>
+  </div>
+</div>
+
+<div class="no-results" id="noResults">該当するCaseが見つかりません。</div>
+
+<main class="content" id="caseList">
+
+<!-- ────────── CASE 01 ────────── -->
+<article class="case-card" id="card-1" data-tags="分詞構文">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 01</div>
+      <div class="case-title">SV動詞並列 ＋ illustrating による結果の分詞構文</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Population age structure 段落</span><span class="status-badge" id="badge-1"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(1)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, April 12, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-1">
+      <span class="s">Per capita investment in human capital <span class="adj">relative to GDP</span> per capita</span>
+      <span class="v">varies</span> <span class="adv">widely across countries</span>
+      <span class="conj">and</span>
+      <span class="v">tends to be</span> <span class="adv">negatively</span> <span class="v">associated</span>
+      <span class="adv">with the ratio of young people to the working-age population</span>,
+      <span class="adv"><span class="v">illustrating</span> a trade-off between the number of children and per capita investments in human capital</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">GDPに対する一人当たり人的資本への投資は国によって大きく異なり、若年人口の労働年齢人口に対する比率と負の相関がある傾向にある。これは、子どもの数と一人当たりの人的資本投資との間のトレードオフを示している。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p>骨格は <em>Per capita investment … <strong>varies</strong> and <strong>tends to be associated</strong></em>（SV並列）。主語が "relative to GDP per capita" という前置詞句を内包した<strong>長大主語</strong>で、動詞を見つけにくい。<em>varies</em> がファーストVであることを瞬時に掴むことが読解の生命線。末尾の <em><strong>illustrating</strong></em> は主節全体の結果・補足を示す<strong>現在分詞構文</strong>（= and this illustrates…）。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">[Per capita investment [relative to GDP per capita]]（長大主語）
+  [varies widely]（V₁）
+  and
+  [tends to be negatively associated with…]（V₂）
+, illustrating [a trade-off…]（結果の分詞構文）
+
+tends to be negatively associated with
+= 〜と負の相関がある傾向にある</div>
+          <p>子ども比率が高いほど一人当たり投資が低くなるという人口経済学の根幹命題がこの一文に凝縮されています。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>主語の核となる名詞は何？（「relative to〜」を取り除いて考える）</li><li>illustrating を and で書き換えられる？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(1,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(1,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ────────── CASE 02 ────────── -->
+<article class="case-card" id="card-2" data-tags="関係詞・省略">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 02</div>
+      <div class="case-title">並列主語内の that 省略 ＋ 過去分詞後置修飾 ＋ respectively による並列対応</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Global school-age population 段落</span><span class="status-badge" id="badge-2"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(2)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-2">
+      <span class="s">The <span class="adj">projected</span> global trend of the school-age population <span class="adj">aged 12–17 years</span>
+      <span class="adv">（associated with secondary education）</span>
+      <span class="conj">and</span>
+      [that] of those <span class="adj">aged 18–23 years</span>
+      <span class="adv">（associated with tertiary education）</span></span>
+      <span class="v">are</span> <span class="c">similar to</span>
+      <span class="o">the <span class="adj">projected</span> trend of the school-age population <span class="adj">aged 6–11 years</span></span>,
+      <span class="adv">shifted in time by 6 and 12 years, respectively</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">12〜17歳（中等教育に対応）および18〜23歳（高等教育に対応）の就学年齢人口の世界的な予測トレンドは、6〜11歳の就学年齢人口の予測トレンドと同様であり、それぞれ6年・12年時間的にずれている。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p>骨格は<strong>SVC（are similar to）</strong>。主語は "The projected global trend … <strong>and [that] of those aged 18–23</strong>" という並列構造で、二つ目の <em><strong>that</strong></em> は直前の "trend" を受ける<strong>代名詞（省略可）</strong>。末尾の <em>shifted in time by 6 and 12 years, <strong>respectively</strong></em> は<strong>過去分詞後置修飾</strong>で「それぞれ6・12年ずれた状態で」を表し、respectively が 6年→12〜17歳、12年→18〜23歳に対応します。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">[trend of 12-17yrs（secondary）]
+and [that（=trend）of 18-23yrs（tertiary）]
+→ are similar to [trend of 6-11yrs]
+  , shifted by 6 years / 12 years, respectively
+
+respectively の対応：
+6年  → 12〜17歳（secondary）
+12年 → 18〜23歳（tertiary）</div>
+          <p>"[that] of those" の that は "trend" の代用。省略して読むと主語の範囲が崩れます。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>that が指している名詞は何？</li><li>respectively の対応先を正確に言える？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(2,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(2,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ────────── CASE 03 ────────── -->
+<article class="case-card" id="card-3" data-tags="否定・部分否定">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 03</div>
+      <div class="case-title">without necessarily V-ing（前置詞句内の部分否定）＋ 空欄C・D の論理核心</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Fertility decline 段落（空欄B〜D）</span><span class="status-badge" id="badge-3"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(3)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-3">
+      <span class="adv">However</span>,
+      <span class="s">the proportion of the school-age population <span class="adj">aged 6–23 years</span></span>
+      <span class="v">is projected to</span> <span class="c">（B）decline</span>
+      <span class="adv">in all regions in the coming decades</span>,
+      <span class="adv">providing an opportunity for many countries
+        to <span class="v">invest</span> <span class="adv">in quality education</span>
+        <span class="conj">and</span>
+        to <span class="v">increase</span> <span class="o">（C） expenditures per student</span>
+        <span class="adv">without <span class="adv">necessarily</span> increasing （D） the total spending
+        on the school-age population</span></span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">しかし、6〜23歳の就学年齢人口の割合は今後数十年で全地域において低下すると予測されており、多くの国が質の高い教育に投資し、就学年齢人口全体への総支出を必ずしも増加させることなく、一人当たり支出を増やす機会を提供している。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><em>without <strong>necessarily</strong> increasing</em> は前置詞句 <em>without V-ing</em>（〜せずに）の中に <strong>necessarily</strong>（必ずしも）が挿入された<strong>部分否定の前置詞句</strong>。高校英語では扱わない高度な構造。論理は「就学年齢人口（分母）が減れば、総支出（D）を増やさなくても一人当たり支出（C）が増える」。この人口×財政の論理が<strong>空欄C・D両方の正解を同時に導きます</strong>。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">population proportion → (B)decline
+  ↓ providing opportunity to
+    increase (C)[expenditures per student]
+    without necessarily increasing (D)[the total spending]
+
+少子化：人数↓ → 総額÷人数↑ → 一人当たり増加！
+
+without V-ing      = 〜せずに（完全否定）
+without necessarily = 必ずしも〜せずに（部分否定）</div>
+          <p>necessarily の位置（without の直後、動名詞の前）が部分否定を作ります。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>without increasing と without necessarily increasing の意味の違いは？</li><li>空欄C・Dに入る語句の論理的根拠を説明できる？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(3,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(3,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ────────── CASE 04 ────────── -->
+<article class="case-card" id="card-4" data-tags="分詞構文">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 04</div>
+      <div class="case-title">found that〜 ＋ 分詞構文の連鎖（reaching / facilitating）＋ little or no の強調</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Fertility decline 段落・ラテンアメリカ研究</span><span class="status-badge" id="badge-4"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(4)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-4">
+      <span class="s">A <span class="adj">detailed</span> study of the <span class="adj">fiscal</span> implications
+      <span class="adv">in 10 countries in Latin America</span></span>
+      <span class="v">found</span> <span class="conj">that</span>
+      <span class="s"><span class="adj">projected</span> reductions in the school-age population</span>
+      <span class="v">would permit</span>
+      <span class="o"><span class="adj">large</span> increases in spending per student</span>,
+      <span class="adv"><span class="v">reaching</span> the <span class="adj">average</span> levels of per capita expenditure of OECD countries</span>
+      <span class="conj">and</span>
+      <span class="adv"><span class="v">facilitating</span> the achievement of <span class="adj">universal</span> secondary education
+      with <span class="adj">little or no</span> increase in taxes</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">ラテンアメリカ10カ国における財政的影響の詳細な研究から、就学年齢人口の予測される減少により一人当たり支出の大幅な増加が可能となり、OECD諸国の一人当たり支出の平均水準に達し、ほとんどあるいは全く増税することなく中等教育の普遍的達成を促進できることが明らかになった。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p>骨格は<strong>A study found that reductions would permit increases（SVOC）</strong>。that節の中で <em>would permit large increases</em> が主動詞となり、そこから <em><strong>reaching</strong></em> ・ <em><strong>facilitating</strong></em> という<strong>現在分詞構文の連鎖</strong>（結果・付帯状況）が続く。<em><strong>little or no</strong> increase</em> は「ほとんど、あるいはまったくXなし」という<strong>二重否定的強調表現</strong>で入試頻出です。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">A study found [that
+  reductions would permit [large increases]
+  , reaching [OECD average levels]     ← 分詞①
+  and
+  facilitating [universal secondary ed] ← 分詞②
+  with [little or no increase in taxes]]
+
+little or no = 「ほとんどまたはまったく〜ない」</div>
+          <p>分詞構文が2つ連鎖（reaching → facilitating）し、どちらも "increases" の結果・付帯状況を表します。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>reaching / facilitating の意味上の主語は何？</li><li>little or no を使った例文を自分で作れる？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(4,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(4,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ────────── CASE 05 ────────── -->
+<article class="case-card" id="card-5" data-tags="比較">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 05</div>
+      <div class="case-title">less than half as much as（倍数比較の複合形）＋ 比較対象の暗示的省略</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Population age structure 段落</span><span class="status-badge" id="badge-5"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(5)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-5">
+      <span class="adv">For countries with <span class="adj">high</span> fertility
+      and <span class="adj">large</span> proportions of children and youth</span>,
+      <span class="s">per capita spending on the human capital of young people</span>
+      <span class="v">is</span> <span class="adv">typically</span>
+      <span class="c"><span class="adj">less than half as much</span></span>
+      <span class="adv">as in countries with <span class="adj">older</span> population age structures</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">出生率が高く、子どもや若者の割合が大きい国々では、若者の人的資本への一人当たり支出は、典型的に、より高齢の人口年齢構造を持つ国々の半分以下である。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><em><strong>less than half as much as</strong></em> は「〜の半分以下」という<strong>倍数比較の複合形</strong>。基本形 <em>as much as X</em>（Xと同量）→ <em>half as much as X</em>（Xの半分）→ <em>less than half as much as X</em>（Xの半分未満）という段階で理解する。"as in countries" は "as [per capita spending is] in countries" という<strong>比較節の省略形</strong>です。日本人学習者が最も誤訳しやすい比較構文の一つ。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">as much as X           → Xと同量（100%）
+half as much as X      → Xの半分（50%）
+less than half as much as X → Xの50%未満
+
+「高出生率国の支出」 ＜ 「高齢構造国の支出」× ½
+
+as in countries = as [spending is] in countries（省略）</div>
+          <p>as の後に [per capita spending is] を補って読むと構造が明確になります。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>half as much as と less than half as much as の違いは？</li><li>as in countries の省略されている部分を補える？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(5,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(5,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ────────── CASE 06 ────────── -->
+<article class="case-card" id="card-6" data-tags="否定・部分否定">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 06</div>
+      <div class="case-title">do not necessarily〜（部分否定）＋ 低所得国における教育の逆説的構造</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Impact of education 段落</span><span class="status-badge" id="badge-6"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(6)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-6">
+      <span class="adv">In low-income and lower-middle-income countries</span>,
+      <span class="s">individuals with <span class="adj">higher</span> levels of education</span>
+      <span class="v">do</span> <span class="adv">not necessarily</span> <span class="v">have</span>
+      <span class="o"><span class="adj">higher</span> labor force participation rates</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">低所得国および低中所得国では、より高い教育水準を持つ個人が、必ずしも高い労働力参加率を持つわけではない。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><em>do <strong>not necessarily</strong> have</em> は<strong>部分否定</strong>（= 必ずしも〜ではない）。全否定 <em>do not have</em> との違いが決定的。前段落では高所得国で「高学歴→高雇用・高収入」が成立すると述べており、<strong>低所得国では逆説が起きる</strong>という対比がこの一文の核心。<strong>副詞 necessarily の位置</strong>（do と have の間）が部分否定を形成します。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">高所得国：高学歴 → 高雇用・高収入 ✓（前段落）
+低所得国：高学歴 → 必ずしも高雇用とはならない △（本文）
+
+do NOT have           → 全否定（まったく持たない）
+do NOT NECESSARILY have → 部分否定（必ずしも持つわけではない）
+
+※ necessarily の位置で意味が変わる
+"They necessarily do not have" ≠ "They do not necessarily have"</div>
+          <p>Case 03（without necessarily）と合わせて「necessarily による部分否定」として学習すると効果的です。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>部分否定と全否定の違いを例文で説明できる？</li><li>この逆説が生じる社会的背景を一言で説明できる？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(6,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(6,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ────────── CASE 07 ────────── -->
+<article class="case-card" id="card-7" data-tags="比較">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 07</div>
+      <div class="case-title">セミコロンによる対比的並置 ＋ conversely ＋ 同格の前置詞句（倍数表現）</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Stark inequalities 段落</span><span class="status-badge" id="badge-7"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(7)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-7">
+      <span class="s">Deprivation of <span class="adj">early</span> education</span>
+      <span class="v">imposes</span> <span class="o"><span class="adj">high</span> costs</span>
+      <span class="adv">for individuals and for societies</span>;
+      <span class="adv">conversely</span>,
+      <span class="s">investments in preschool and childcare</span>
+      <span class="v">yield</span> <span class="o"><span class="adj">high</span> returns</span>,
+      <span class="adv">of 4 to 16 times the amount <span class="adj">spent</span> in such programs</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">幼児教育を受けられないことは、個人にとっても社会にとっても高いコストを課す。逆に、就学前教育や保育への投資は高いリターンをもたらし、そのプログラムに費やした金額の4〜16倍に達する。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p>セミコロン（;）で「コスト」と「リターン」を対比する<strong>2つのSVO文の並置</strong>。<em><strong>conversely</strong></em>（逆に）が対比の方向を明示。末尾の <em>of 4 to 16 times the amount spent</em> は <em>returns</em> に対する<strong>同格の前置詞句</strong>で数量的に具体化。<em>spent</em> は "the amount" を修飾する<strong>過去分詞後置修飾</strong>（= that was spent）です。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">[Deprivation] imposes [high costs]（SVO）
+; conversely,（対比の明示）
+[investments] yield [high returns]（SVO）
+  = [4 to 16 times [the amount [spent in programs]]]
+       ↑ 同格句       ↑ 過去分詞後置修飾
+
+SVO ; SVO 対比構造：コスト ↔ リターン</div>
+          <p>"4 to 16 times the amount spent" の "spent" は "that was spent" の省略形です。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>セミコロンの前後の対比関係を一言で説明できる？</li><li>spent の前に省略されている語句を補える？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(7,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(7,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ────────── CASE 08 ────────── -->
+<article class="case-card" id="card-8" data-tags="比較">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 08</div>
+      <div class="case-title">the 比較級…the 比較級（比例構文）＋ be likely to V の3分岐並列不定詞</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Staying in school 段落（問5・散布図根拠文）</span><span class="status-badge" id="badge-8"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(8)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-8">
+      studies … have shown that
+      <span class="conj">the</span> <span class="adv">earlier girls marry</span>,
+      <span class="conj">the</span> <span class="adv">less likely</span>
+      <span class="s">they</span> <span class="v">are</span>
+      to <span class="v">be literate</span>
+      <span class="conj">or</span> to <span class="v">attend</span>
+      <span class="conj">and</span> <span class="v">complete</span> secondary education.
+      <hr>
+      <span class="adv">Similarly</span>,
+      <span class="s">girls <span class="rel">who</span> give birth before the age of 18</span>
+      <span class="v">have</span> <span class="c"><span class="adj">worse</span> educational and labor market outcomes</span>
+      than those <span class="rel">who</span> do not.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">研究から、女性が早く結婚するほど、識字力を持ち、あるいは中等教育に出席し修了する可能性が低いことが示されている。／ 同様に、18歳以前に出産する女性は、そうでない女性に比べて教育・労働市場での成果が悪い。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p><em><strong>the 比較級…, the 比較級…</strong></em> は<strong>比例の相関構文</strong>（〜であればあるほど、ますます〜）。<em>the less likely [they are] to</em> に続く不定詞が ①be literate ②attend ③complete という<strong>3分岐並列</strong>を形成。"or" と "and" の組み合わせで「①あるいは（②かつ③）」という論理構造。<strong>問5の散布図（負の相関）</strong>を読み解く理論的根拠がここにあります。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">[the earlier girls marry]（比例節）
+↓
+[the less likely they are to
+  ① be literate
+  or ② attend
+  and ③ complete secondary education]
+
+早婚↑ → 識字・就学・卒業の可能性↓（負の相関）
+→ 問5の散布図：右下がりの非線形曲線</div>
+          <p>問5の散布図問題では「縦軸：早産率、横軸：女性の高校卒業率」で右下がりの非線形曲線を選ぶ根拠がこの比例構文にあります。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>the 比較級…the 比較級 の基本構造を説明できる？</li><li>3分岐並列の「or / and」の論理関係を整理できる？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(8,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(8,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ────────── CASE 09 ────────── -->
+<article class="case-card" id="card-9" data-tags="関係詞・省略">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 09</div>
+      <div class="case-title">even those born in〜（関係詞省略＋even強調）＋ 動名詞主語 SVC ＋ which 非制限関係詞節</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Access to education 段落</span><span class="status-badge" id="badge-9"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(9)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-9">
+      <span class="s">Immigrants and their children,
+      <span class="adv">sometimes even those <span class="adj">born in the host country</span></span>,</span>
+      <span class="v">face</span> <span class="o"><span class="adj">various</span> barriers</span>
+      <span class="adv">in accessing <span class="adj">quality</span> education</span>.
+      <hr>
+      <span class="s">They</span> <span class="v">are</span> <span class="adv">less likely</span> <span class="v">to be enrolled</span>
+      <span class="adv">in <span class="adj">early childhood</span> education</span>,
+      <span class="rel">which</span> <span class="v">can</span> <span class="adv">negatively</span> <span class="v">impact</span>
+      <span class="o">their academic performance and <span class="adj">lifetime</span> educational attainment</span>.
+      <hr>
+      <span class="s">Overcoming these barriers</span>
+      <span class="v">is</span> <span class="c">critical</span>
+      <span class="adv">for improving the educational outcomes of migrant children</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">移民とその子どもたちは、ホスト国で生まれた子どもでさえも、質の高い教育へのアクセスにおいて様々な障壁に直面する。／ 彼らは幼児教育に登録される可能性が低く、それが学業成績と生涯の教育達成に悪影響を与えうる。／ これらの障壁を克服することは、移民の子どもたちの教育成果を改善するために不可欠である。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p>3つの構文テーマが集約。① <em>even those <strong>born</strong> in the host country</em> は <em>those [who were] born…</em> の<strong>関係詞省略</strong>形で <em>even</em> による<strong>譲歩的強調</strong>（ホスト国生まれでさえも）。② <em><strong>which</strong> can negatively impact</em> の which は前文全体を先行詞とする<strong>非制限用法</strong>（= and this can impact）。③ <em><strong>Overcoming</strong> these barriers</em> は<strong>動名詞主語のSVC構造</strong>で主張の核心を名詞化する学術英語の定番技法。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">① [those [who were] born…]（関係詞省略）
+   even → 譲歩強調「ホスト国生まれでさえも」
+
+② [which]（非制限用法）
+   = 前文全体 → and this can negatively impact…
+
+③ [Overcoming these barriers]（動名詞主語）
+   is critical for…（SVC）</div>
+          <p>Nominalization（名詞化）は学術英語の核心技法。「克服する」という動詞を Overcoming と名詞化して主語にすることで、課題の普遍的重要性を宣言するレトリックになります。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>even those born の省略された関係詞を補える？</li><li>which の先行詞は何（単語ではなく節全体）？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(9,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(9,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+<!-- ────────── CASE 10 ────────── -->
+<article class="case-card" id="card-10" data-tags="関係詞・省略">
+  <div class="card-head">
+    <div class="card-head-left">
+      <div class="case-num">Case 10</div>
+      <div class="case-title">長大主語 ＋ that include〜（並列名詞句5連）＋ have been shown to V（受動完了＋不定詞）</div>
+      <div class="case-meta-row"><span class="case-ref">問題Ⅱ｜Child marriage セクション</span><span class="status-badge" id="badge-10"></span></div>
+    </div>
+    <div class="card-actions"><button type="button" class="act-btn" onclick="focusCard(10)">集中</button></div>
+  </div>
+  <div class="case-source">【出典】UN-DESA Policy Brief No.152, 2023.</div>
+  <div class="card-body">
+    <div class="english-text" id="eng-10">
+      <span class="s">Multisectoral empowerment programs
+      <span class="rel">that</span> <span class="v">include</span>
+      <span class="o">life skills training,
+      livelihood training,
+      gender awareness training,
+      exposure to future careers,
+      <span class="conj">and</span>
+      sexual and reproductive health training</span></span>
+      <span class="v">have been shown</span>
+      to <span class="v">raise</span> <span class="o">school enrollment rates</span>
+      <span class="conj">and</span>
+      to <span class="v">lower</span> <span class="o">the risks of pregnancy and early childbearing</span>.
+    </div>
+    <details class="reveal-details reveal-jp">
+      <summary class="reveal-summary">📖 日本語訳</summary>
+      <div class="reveal-inner">
+        <div class="translation">生活技能訓練、生計訓練、ジェンダー意識向上訓練、将来のキャリアへの接触、そして性と生殖に関する健康訓練を含む多分野にわたるエンパワーメントプログラムは、就学率を高め、妊娠と早期出産のリスクを低下させることが示されている。</div>
+      </div>
+    </details>
+    <details class="reveal-details reveal-exp">
+      <summary class="reveal-summary">💡 構文解説</summary>
+      <div class="reveal-inner">
+        <div class="imp-box">
+          <div class="imp-label">【ここが重要！】</div>
+          <p>骨格は<strong>Multisectoral empowerment programs have been shown to raise…and to lower…（SV）</strong>。主語直後に <em><strong>that include</strong>〜</em> という関係詞節が挿入され、その中に5つの名詞句が並列。<em><strong>have been shown to V</strong></em> は<strong>受動態完了＋不定詞</strong>で「〜することが示されてきた」という学術的主張の定型表現。最後の <em>to raise〜 and to lower〜</em> が<strong>2分岐の並列不定詞</strong>。</p>
+        </div>
+        <div class="logic-box">
+          <div class="logic-label">◉ ロジカル・アイ</div>
+          <div class="logic-formula">[Multisectoral empowerment programs（主語）
+  [that include（関係詞節）
+    ① life skills training
+    ② livelihood training
+    ③ gender awareness training
+    ④ exposure to future careers
+    ⑤ sexual and reproductive health training]]
+have been shown to（受動完了＋不定詞）
+  ① raise [school enrollment rates]
+  and
+  ② lower [the risks of pregnancy…]</div>
+          <p>"have been shown to V" は研究による実証の定型表現。主語の関係詞節（5並列）が長いため、"have been shown" を素早く見つけることが読解の鍵です。</p>
+        </div>
+        <div class="selfcheck">
+          <div class="selfcheck-title">⏱ 30秒セルフチェック</div>
+          <ul><li>主語はどこまで？（that include〜 が修飾する名詞を特定できる？）</li><li>have been shown to V を能動態に書き換えられる？</li></ul>
+        </div>
+      </div>
+    </details>
+    <div class="prog-btns">
+      <button type="button" class="prog-btn prog-ok" onclick="setStatus(10,'mastered',this)">✅ 理解した</button>
+      <button type="button" class="prog-btn prog-redo" onclick="setStatus(10,'needs-review',this)">⚠ 要復習</button>
+    </div>
+  </div>
+</article>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-title">早稲田大学政治経済学部　合格への道標</div>
+    <div class="footer-body">早稲田大学政治経済学部の英語は、この国の大学入試の中でもっとも「本物の政策的知性」を問う試験のひとつです。国連経済社会局（UN-DESA）の政策提言書という硬質な学術英語を読み解くこの問題は、構文力・語彙力・社会科学的教養の三位一体を要求します。</div>
+    <div class="footer-body">今回解析した10のCaseは、すべて「構文が見えた瞬間に世界が開ける」という体験のために選ばれています。without necessarily という部分否定が空欄C・Dの正解を同時に導く瞬間、the earlier…the less likely の比例構文が問5の散布図の形（右下がり非線形）を決定する瞬間、長大主語の中に5並列の名詞句を内包するCase 10の関係詞節を一息で読み切る瞬間——それらはすべて、あなたの知性が一段高いところへ跳躍する瞬間です。</div>
+    <div class="footer-body">政経が求めているのは、英語を「読める」学生ではなく、英語で「世界を考える」学生です。文型という設計図を手にしたあなたは、もうその入口に立っています。</div>
+    <details class="footer-more">
+      <summary>今日の使い方（おすすめルーティン）</summary>
+      <ol>
+        <li>タブで弱点カテゴリーを選ぶ（例：否定・部分否定だけ）</li>
+        <li>「英文のみ」モードで骨格だけ読む</li>
+        <li>和訳 → 解説を開いて根拠を確認</li>
+        <li>理解できたら「✅ 理解した」を記録（ブラウザに保存）</li>
+        <li>仕上げに「シャッフル3枚」で短時間周回</li>
+      </ol>
+    </details>
+    <div class="footer-progress" id="footerProgress">進捗：読み込み中…</div>
+    <div class="footer-credit">©2026 Sapphire ONLINE Studies English Project</div>
+  </div>
+</footer>
+
+<script>
+const TOTAL  = 10;
+const LS_KEY = "waseda_seikei2026_v1";
+const TAB_COLORS = {
+  "すべて":"#8C1A1A","分詞構文":"#2E7D32","関係詞・省略":"#6A1B9A",
+  "否定・部分否定":"#E65100","比較":"#1565C0",
+  "⚠ 要復習":"#BF360C","○ 未学習":"#37474F"
+};
+
+let statusMap={}, activeTag='all', focusedId=null;
+
+function loadProgress(){
+  try{statusMap=JSON.parse(localStorage.getItem(LS_KEY)||"{}");}catch(e){statusMap={};}
+  for(let i=1;i<=TOTAL;i++){if(!statusMap[i])statusMap[i]="none";}
+}
+function saveProgress(){localStorage.setItem(LS_KEY,JSON.stringify(statusMap));}
+
+function initDashboard(){
+  const chips=document.getElementById('dashChips');chips.innerHTML='';
+  for(let i=1;i<=TOTAL;i++){
+    const d=document.createElement('div');d.className='dash-chip';
+    const dot=document.createElement('div');dot.className='chip-dot';dot.id='dot-'+i;
+    const lbl=document.createElement('span');lbl.textContent='C'+String(i).padStart(2,'0');
+    d.appendChild(dot);d.appendChild(lbl);chips.appendChild(d);
+  }
+}
+function updateDashboard(){
+  let mastered=0;
+  for(let i=1;i<=TOTAL;i++){
+    const s=statusMap[i]||"none";
+    const dot=document.getElementById('dot-'+i);
+    if(dot)dot.className='chip-dot'+(s==='mastered'?' mastered':s==='needs-review'?' needs-review':'');
+    if(s==='mastered')mastered++;
+  }
+  const pct=Math.round((mastered/TOTAL)*100);
+  document.getElementById('masteredCount').textContent=mastered;
+  document.getElementById('progressBar').style.width=pct+'%';
+  document.getElementById('footerProgress').textContent=`進捗：理解済み ${mastered} / ${TOTAL}（${pct}%）`;
+}
+
+function setStatus(num,newStatus,btn){
+  const prev=statusMap[num];
+  statusMap[num]=(prev===newStatus)?"none":newStatus;
+  saveProgress();
+  const card=document.getElementById('card-'+num);
+  const badge=document.getElementById('badge-'+num);
+  card.querySelectorAll('.prog-btn').forEach(b=>b.classList.remove('sel'));
+  card.classList.remove('mastered','needs-review');
+  badge.className='status-badge';badge.textContent='';
+  const s=statusMap[num];
+  if(s==='mastered'){card.classList.add('mastered');badge.classList.add('mastered');badge.textContent='✅ 理解済み';if(btn.classList.contains('prog-ok'))btn.classList.add('sel');}
+  else if(s==='needs-review'){card.classList.add('needs-review');badge.classList.add('needs-review');badge.textContent='⚠ 要復習';if(btn.classList.contains('prog-redo'))btn.classList.add('sel');}
+  updateDashboard();applyFilters();
+}
+
+function applySavedStatus(){
+  for(let i=1;i<=TOTAL;i++){
+    const s=statusMap[i];const card=document.getElementById('card-'+i);const badge=document.getElementById('badge-'+i);
+    if(!card)continue;
+    card.classList.remove('mastered','needs-review');badge.className='status-badge';badge.textContent='';
+    if(s==='mastered'){card.classList.add('mastered');badge.classList.add('mastered');badge.textContent='✅ 理解済み';const b=card.querySelector('.prog-ok');if(b)b.classList.add('sel');}
+    else if(s==='needs-review'){card.classList.add('needs-review');badge.classList.add('needs-review');badge.textContent='⚠ 要復習';const b=card.querySelector('.prog-redo');if(b)b.classList.add('sel');}
+  }
+}
+
+function resetAll(){
+  if(!confirm('すべての進捗をリセットしますか？'))return;
+  for(let i=1;i<=TOTAL;i++)statusMap[i]='none';
+  saveProgress();
+  for(let i=1;i<=TOTAL;i++){
+    const card=document.getElementById('card-'+i);
+    card.classList.remove('mastered','needs-review');
+    document.getElementById('badge-'+i).className='status-badge';
+    document.getElementById('badge-'+i).textContent='';
+    card.querySelectorAll('.prog-btn').forEach(b=>b.classList.remove('sel'));
+  }
+  updateDashboard();applyFilters();
+}
+
+function countByTag(tag){
+  const cards=document.querySelectorAll('.case-card');
+  if(tag==='すべて')return cards.length;
+  let n=0;
+  cards.forEach(c=>{
+    const id=parseInt(c.id.split('-')[1]);const s=statusMap[id]||'none';
+    if(tag==='⚠ 要復習'&&s==='needs-review')n++;
+    else if(tag==='○ 未学習'&&s==='none')n++;
+    else if(c.getAttribute('data-tags')===tag)n++;
+  });return n;
+}
+
+function buildTagBar(){
+  const bar=document.getElementById('tagBar');bar.innerHTML='';
+  const allTabs=[
+    {tag:'すべて',special:false},{tag:'DIVIDER'},
+    {tag:'分詞構文',special:false},{tag:'関係詞・省略',special:false},
+    {tag:'否定・部分否定',special:false},{tag:'比較',special:false},
+    {tag:'DIVIDER'},
+    {tag:'⚠ 要復習',special:true},{tag:'○ 未学習',special:true}
+  ];
+  allTabs.forEach(item=>{
+    if(item.tag==='DIVIDER'){const d=document.createElement('div');d.className='tab-divider';bar.appendChild(d);return;}
+    const b=document.createElement('button');b.type='button';
+    b.className='tab-btn'+(item.special?' tab-special':'');
+    b.dataset.tag=item.tag;
+    b.style.setProperty('--tab-color',TAB_COLORS[item.tag]||'#8C1A1A');
+    b.innerHTML=`${item.tag}<span class="tab-count">${countByTag(item.tag)}</span>`;
+    if(item.tag==='すべて')b.classList.add('active');
+    b.onclick=()=>setTab(item.tag,b);
+    bar.appendChild(b);
+  });
+}
+
+function setTab(tag,btn){
+  activeTag=tag==='すべて'?'all':tag;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');applyFilters();
+}
+
+function refreshTabCounts(){
+  document.querySelectorAll('.tab-btn').forEach(b=>{
+    const tag=b.dataset.tag;if(!tag)return;
+    const el=b.querySelector('.tab-count');if(el)el.textContent=countByTag(tag);
+  });
+}
+
+function applyFilters(){
+  const q=(document.getElementById('searchInput').value||'').trim().toLowerCase();
+  let visible=0;
+  document.querySelectorAll('.case-card').forEach(card=>{
+    const cardTag=card.getAttribute('data-tags')||'';
+    const id=parseInt(card.id.split('-')[1]);const s=statusMap[id]||'none';
+    const text=card.innerText.toLowerCase();
+    let tagOK=false;
+    if(activeTag==='all')tagOK=true;
+    else if(activeTag==='⚠ 要復習')tagOK=(s==='needs-review');
+    else if(activeTag==='○ 未学習')tagOK=(s==='none');
+    else tagOK=(cardTag===activeTag);
+    const show=tagOK&&(!q||text.includes(q));
+    card.style.display=show?'':'none';
+    if(show)visible++;
+  });
+  document.getElementById('noResults').style.display=(visible===0)?'block':'none';
+  refreshTabCounts();
+}
+
+function focusCard(id){
+  const card=document.getElementById('card-'+id);
+  if(document.body.classList.contains('focusing')&&focusedId===id){
+    document.body.classList.remove('focusing');card.classList.remove('focused');focusedId=null;
+  }else{
+    document.body.classList.add('focusing');
+    document.querySelectorAll('.case-card').forEach(c=>c.classList.remove('focused'));
+    card.classList.add('focused');focusedId=id;
+    card.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+
+function setAllReveal(show){
+  document.querySelectorAll('.reveal-details').forEach(d=>{
+    if(show)d.setAttribute('open','');else d.removeAttribute('open');
+  });
+}
+
+function setMode(mode){
+  document.body.classList.remove('mode-english','mode-blind');
+  ['modeNormal','modeEnglish','modeBlind'].forEach(id=>{document.getElementById(id).classList.remove('active');});
+  if(mode==='english'){document.body.classList.add('mode-english');document.getElementById('modeEnglish').classList.add('active');}
+  else if(mode==='blind'){document.body.classList.add('mode-blind');document.getElementById('modeBlind').classList.add('active');}
+  else{document.getElementById('modeNormal').classList.add('active');}
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  loadProgress();buildTagBar();initDashboard();applySavedStatus();updateDashboard();applyFilters();setMode('normal');
+
+  document.getElementById('modeNormal').addEventListener('click',()=>setMode('normal'));
+  document.getElementById('modeEnglish').addEventListener('click',()=>setMode('english'));
+  document.getElementById('modeBlind').addEventListener('click',()=>setMode('blind'));
+  document.getElementById('btnPlain').addEventListener('click',()=>{
+    const plain=document.body.classList.toggle('plain');
+    const btn=document.getElementById('btnPlain');
+    btn.textContent=plain?'🎨 カラー表示':'🔲 白文モード';
+    btn.classList.toggle('active',plain);
+  });
+  document.getElementById('btnShowAll').addEventListener('click',()=>setAllReveal(true));
+  document.getElementById('btnHideAll').addEventListener('click',()=>setAllReveal(false));
+  document.getElementById('searchInput').addEventListener('input',applyFilters);
+
+  document.getElementById('btnShuffle').addEventListener('click',()=>{
+    const visible=Array.from(document.querySelectorAll('.case-card')).filter(c=>c.style.display!=='none');
+    if(!visible.length)return;
+    const picks=visible.slice().sort(()=>Math.random()-0.5).slice(0,Math.min(3,visible.length));
+    document.querySelectorAll('.case-card').forEach(c=>c.style.display='none');
+    picks.forEach(c=>c.style.display='');
+    document.body.classList.add('focusing');
+    document.querySelectorAll('.case-card').forEach(c=>c.classList.remove('focused'));
+    picks[0].classList.add('focused');picks[0].scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  document.getElementById('btnAll').addEventListener('click',()=>{
+    document.getElementById('searchInput').value='';
+    activeTag='all';
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    const t=document.querySelector('.tab-btn[data-tag="すべて"]');if(t)t.classList.add('active');
+    document.body.classList.remove('focusing','mode-english','mode-blind');
+    document.querySelectorAll('.case-card').forEach(c=>c.classList.remove('focused'));
+    focusedId=null;setMode('normal');applyFilters();window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  document.addEventListener('click',e=>{
+    if(!document.body.classList.contains('mode-blind'))return;
+    const eng=e.target.closest('.english-text');if(!eng)return;
+    eng.classList.toggle('unblurred');
+  });
+});
+</script>
+</body>
+</html>
